@@ -16,5 +16,6 @@ class PhoneBook
 		unsigned int	_size;
 		int				_insert_id;
 		Contact			_contacts[8];
+};
 
 #endif
