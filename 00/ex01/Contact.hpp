@@ -18,10 +18,10 @@ public:
 	const std::string	&get_firstname(void)		const;
 	const std::string	&get_lastname(void)		const;
 	const std::string	&get_nickname(void)		const;
-	void				set_index(int index);
-	void				set_firstname(std::string first_name);
-	void				set_lastname(std::string last_name);
-	void				set_nickname(std::string nickname);
+	void				push_index(int index);
+	void				push_firstname(std::string first_name);
+	void				push_lastname(std::string last_name);
+	void				push_nickname(std::string nickname);
 };
 
 #endif
