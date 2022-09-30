@@ -11,8 +11,8 @@ class HumanA
 		void				attack(void)	const;
 	private:
 		const std::string &_name;
-		Wepon			&_wepon;
-}
+		Weapon				&_weapon;
+};
 
 
 #endif
