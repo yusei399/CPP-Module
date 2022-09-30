@@ -3,7 +3,6 @@
 
 HumanB::HumanB(const std::string &_name) : _name(_name)
 {
-
 }
 
 void	HumanB::setWeapon(Weapon *_weapon)
