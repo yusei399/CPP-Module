@@ -5,7 +5,7 @@
 
 class FragTrap : public ClapTrap
 {
-private:
+protected:
 	FragTrap(void);
 public:
 	FragTrap(const std::string &_name);
