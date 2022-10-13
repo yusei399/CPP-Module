@@ -12,6 +12,7 @@ public:
 	Bureaucrat(const std::string &name, int  grade);
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat &copy);
+	Bureaucrat &operator=(const Bureaucrat &rhs);
 	const std::string &getName() const;
 	int getGrade() const;
 	void promote();
