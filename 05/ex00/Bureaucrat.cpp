@@ -31,5 +31,34 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &rhs)
 	return (*this);
 }
 
+const	std::string	&Bureaucrat::getName() const
+{
+	return (this->_name);
+}
 
+int	Bureaucrat::getGrade() const
+{
+	return (this->_grade);
+}
 
+void	Bureaucrat::promote()
+{
+	if (this->_grade - 1 >= 1)
+		this->_grade--;
+	else
+		throw GradeTooHighException();
+}
+
+void	Bureaucrat::demote()
+{
+	if (this->_grade + 1 <= 150)
+		this->_grade++;
+	else
+		throw GradeTooLowException();
+}
+
+std::ostream	&operator<<(std::ostream &o, const Bureaucrat &b)
+{
+	o << b.getName() << ", bureaucrat grade " << b.getGrade();
+	return (o);
+}

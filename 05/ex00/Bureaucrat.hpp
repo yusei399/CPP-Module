@@ -6,8 +6,6 @@
 
 class Bureaucrat
 {
-protected:
-
 public:
 	Bureaucrat(const std::string &name, int  grade);
 	~Bureaucrat();
