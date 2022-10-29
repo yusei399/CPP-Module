@@ -1,22 +1,22 @@
 #include "Bureaucrat.hpp"
 
-const char *Bureaucrat::GradeTooHighException:: what() const throw()
+const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("The grade (1)");
+	return ("The grade is higher than the maximum possible grade (1).");
 }
 
-
-const char *Bureaucrat::GradeTooLowException:: what() const throw()
+const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return (" The grade low (150)");
+	return ("The grade is lower than the minimum possible grade (150).");
 }
 
-Bureaucrat::Bureaucrat(const std::string &name, int grade) :_name(name)
+Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name)
 {
 	if (grade < 1)
 		throw GradeTooHighException();
-	if (grade > 150)
+	else if (grade > 150)
 		throw GradeTooLowException();
+	this->_grade = grade;
 }
 
 Bureaucrat::Bureaucrat() {}
@@ -31,7 +31,7 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &rhs)
 	return (*this);
 }
 
-const	std::string	&Bureaucrat::getName() const
+const std::string	&Bureaucrat::getName() const
 {
 	return (this->_name);
 }
@@ -55,6 +55,33 @@ void	Bureaucrat::demote()
 		this->_grade++;
 	else
 		throw GradeTooLowException();
+}
+
+void	Bureaucrat::signForm(Form &form) const
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << this->_name << " succeeded in signing `" << form.getName() << "`" << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << this->_name << " failed to sign `" << form.getName()
+			<< "` because his/her grade is too low" << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(const Form &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << this->_name << " executes `" << form.getName() << "`" << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << this->_name << " failed to execute `" << form.getName() << "`. Reason: " << e.what() << std::endl;
+	}
 }
 
 std::ostream	&operator<<(std::ostream &o, const Bureaucrat &b)
