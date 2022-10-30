@@ -106,3 +106,21 @@ std::string Convert::to_float() const
 
     return ss.str();
 }
+
+std::string Convert::to_double() const
+{
+	if (error)
+	{
+		return "double : impossible";
+	}
+    std::stringstream ss;
+
+    if (value == "+inf") {
+        ss << "double: +";
+    } else {
+        ss << "double: ";
+    }
+    ss << std::fixed << std::setprecision(1) << numd;
+
+    return ss.str();
+}
