@@ -87,3 +87,22 @@ std::string Convert::to_int() const
 
     return ss.str();
 }
+
+std::string Convert::to_float() const
+{
+	if (error)
+	{
+		return "float : impossible";
+	}
+	
+	std::stringstream ss;
+
+    if (value == "+inf") {
+        ss << "float: +";
+    } else {
+        ss << "float: ";
+    }
+    ss << std::fixed << std::setprecision(1) << numf << "f";
+
+    return ss.str();
+}
