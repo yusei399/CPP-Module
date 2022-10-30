@@ -46,3 +46,23 @@ bool is_pseudo_litteral(const std::string& str)
     return false;
 }
 
+std::string Convert::to_char() const
+{
+	if (error)
+	{
+		return "char : impossible";
+	}
+	if (std::isprint(static_cast<int>(c)))
+	{
+		return "char: Non displayable";
+	}
+	if (type == TypeFloat || type == TypeDouble)
+	{
+		if (numd != numd || numd == std::numeric_limits<double>::infinity() ||
+			numd == -std::numeric_limits<double>::infinity()){
+				return "char : impossible";
+			}
+	}
+}
+
+

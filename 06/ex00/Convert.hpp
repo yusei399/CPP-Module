@@ -27,8 +27,8 @@ class Convert
 		~Convert();
 
 
-		std::string to_char();
-		std::string to_int();
+		std::string to_char() const;
+		std::string to_int() const;
 		std::string to_float() const;
 		std::string to_double() const;
 };
