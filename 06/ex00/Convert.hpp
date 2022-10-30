@@ -20,8 +20,9 @@ class Convert
 	private:
 		void parse();
 	public:
-		Convert(std::string &inpput);
-		Convert(Convert const &copy);
+		Convert();
+		Convert(const Convert&);
+		Convert(const std::string &value);
 		Convert& operator=(const Convert&);
 		~Convert();
 
