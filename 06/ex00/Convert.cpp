@@ -63,6 +63,10 @@ std::string Convert::to_char() const
 				return "char : impossible";
 			}
 	}
+
+	std::stringstream ss;
+	ss << "char: '" << c << "'";
+    return ss.str();
 }
 
 
