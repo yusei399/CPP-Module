@@ -124,3 +124,71 @@ std::string Convert::to_double() const
 
     return ss.str();
 }
+
+void Convert::parse()
+{
+    char* end;
+
+    error = false;
+    if (value.length() == 1 && !std::isdigit(value[0])) {
+        type = TypeChar;
+        c = value[0];
+    } else {
+        if (value.find('.') != std::string::npos || is_pseudo_litteral(value)) {
+            if (value == "nanf" || value == "-inff" || value == "+inff" || value == "inff") {
+                value.erase(value.end() - 1);
+            }
+            if (value.find('.') != std::string::npos && value[value.length() - 1] == 'f') {
+                type = TypeFloat;
+                value.erase(value.end() - 1);
+                numf = std::strtof(value.c_str(), &end);
+            } else {
+                type = TypeDouble;
+                numd = std::strtod(value.c_str(), &end);
+            }
+
+            if (*end != '\0') {
+                error = true;
+            }
+        } else {
+            type = TypeInt;
+            num_int = static_cast<int>(std::strtol(value.c_str(), &end, 10));
+
+            if (*end != '\0') {
+                error = true;
+            }
+        }
+    }
+
+    if (!error) {
+        switch (type) {
+            case TypeChar: {
+                num_int = static_cast<int>(c);
+                numd = static_cast<double>(c);
+                numf = static_cast<float>(c);
+                break;
+            }
+
+            case TypeInt: {
+                c = static_cast<char>(num_int);
+                numd = static_cast<double>(num_int);
+                numf = static_cast<float>(num_int);
+                break;
+            }
+
+            case TypeFloat: {
+                c = static_cast<char>(numf);
+                num_int = static_cast<int>(numf);
+                numd = static_cast<double>(numf);
+                break;
+            }
+
+            case TypeDouble: {
+                c = static_cast<char>(numd);
+                num_int = static_cast<int>(numd);
+                numf = static_cast<float>(numd);
+                break;
+            }
+        }
+    }
+}
