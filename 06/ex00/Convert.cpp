@@ -63,10 +63,27 @@ std::string Convert::to_char() const
 				return "char : impossible";
 			}
 	}
-
 	std::stringstream ss;
 	ss << "char: '" << c << "'";
     return ss.str();
 }
 
 
+std::string Convert::to_int() const
+{
+	if (error)
+	{
+		return "int : impossible";
+	}
+
+	std::stringstream ss;
+
+	if (value == "+inf") {
+        ss << "float: +";
+    } else {
+        ss << "float: ";
+    }
+    ss << std::fixed << std::setprecision(1) << numf << "f";
+
+    return ss.str();
+}
