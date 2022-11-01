@@ -3,7 +3,7 @@
 
 #include "Base.hpp"
 
-class C :Base
+class C :public Base
 {
 };
 

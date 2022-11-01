@@ -2,7 +2,7 @@
 #define B_HPP
 #include "Base.hpp"
 
-class B : Base
+class B : public Base
 {
 };
 
