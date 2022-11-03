@@ -40,6 +40,21 @@ Array<T>::Array(const Array &copy) :  _ptr(new T[copy._n]), _n(copy._n)
 }
 
 
+template<typename T>
+Array<T>	&Array<T>::operator=(const Array &rhs)
+{
+	for (size_t i = 0; i < this->_n && i < rhs._n; i++)
+		this->_ptr[i] = rhs._ptr[i];
+	return (*this);
+}
+
+template <typename T>
+T	&Array<T>::operator[](unsigned int n)
+{
+	if (n >= this->_n)
+		throw std::out_of_range("index out of bounds");
+	return (this->_ptr[n]);
+}
 
 #endif
 
