@@ -1,7 +1,8 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
-
+# include <exception>
+# include <stdexcept>
 template <typename T>
 class Array
 {
@@ -22,7 +23,7 @@ template <typename T>
 Array<T>::Array() : _ptr(NULL), _n(0){}
 
 template <typename T>
-Array<T>::Array(unsigned int _n) : _ptr(new T[n]), _n(n) {}
+Array<T>::Array(unsigned int n) : _ptr(new T[n]), _n(n) {}
 
 template <typename T>
 Array<T>::~Array()
