@@ -29,6 +29,7 @@ void PhoneBook::displayEntries(void)const
 	unsigned int	i;
 	unsigned int	j;
 
+	i = 0;
 	while (i < this->_size)
 	{
 		std::cout << "|         ";
@@ -59,7 +60,7 @@ void PhoneBook::displayEntries(void)const
 			std::cout << this->_contacts[i].get_lastname();
 		}
 		std::cout << "|";
-		if (this->_contacts[i].get_nickname().length > 10)
+		if (this->_contacts[i].get_nickname().length() > 10)
 		{
 			std::cout << this->_contacts[i].get_nickname().substr(0, 9);
 			std::cout << ".";

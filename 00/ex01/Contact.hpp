@@ -7,10 +7,10 @@
 class Contact
 {
 private:
-	int			index;
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
+	int			_index;
+	std::string _firstname;
+	std::string _lastname;
+	std::string _nickname;
 public:
 	Contact();
 	~Contact();

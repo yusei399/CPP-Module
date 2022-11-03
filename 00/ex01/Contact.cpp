@@ -7,7 +7,7 @@ int Contact::get_index(void)const
 
 const std::string &Contact::get_firstname(void)const
 {
-	return (this->_first_name);
+	return (this->_firstname);
 }
 
 const std::string	&Contact::get_lastname(void) const
