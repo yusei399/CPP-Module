@@ -40,6 +40,12 @@ Array<T>::Array(const Array &copy) :  _ptr(new T[copy._n]), _n(copy._n)
 	}
 }
 
+template <typename T>
+int	Array<T>::size() const
+{
+	return (this->_n);
+}
+
 
 template<typename T>
 Array<T>	&Array<T>::operator=(const Array &rhs)
