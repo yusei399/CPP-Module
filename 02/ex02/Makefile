@@ -1,4 +1,4 @@
-NAME = ex03
+NAME = ex02
 
 SRCS = Fixed.cpp main.cpp
 OBJS = ${SRCS:.cpp=.o}
@@ -21,3 +21,4 @@ fclean :clean
 	${RM} ${NAME}
 
 re : fclean all
+
