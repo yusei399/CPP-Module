@@ -1,6 +1,6 @@
 NAME	= job_of_my_dreams
 
-SRCS	= Account.cpp tests.cpp
+SRCS	= Account.cpp test.cpp
 OBJS	= ${SRCS:.cpp=.o}
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
