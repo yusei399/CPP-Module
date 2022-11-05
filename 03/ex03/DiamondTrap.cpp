@@ -7,11 +7,6 @@ DiamondTrap::~DiamondTrap(void)
 	std::cout << "[DiamondTrap " << this->_name << "] (destructed)" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const std::string &_name)
-{
-	std::cout <<  "[FragTrap " << this->_name << "] (destructed) I'm dead :((((((" << std::endl;
-}
-
 DiamondTrap::DiamondTrap(const std::string &name) : ClapTrap(name + "_clap_name"), ScavTrap(name + "_clap_name"), FragTrap(name + "_clap_name"), _name(name)
 {
 	this->_energy = 50;
