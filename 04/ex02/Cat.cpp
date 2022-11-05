@@ -2,6 +2,7 @@
 
 Cat::Cat() : Animal("Cat")
 {
+	this->_brain = new Brain();
 	std::cout << this->type << "create with defaut" << std::endl;
 }
 
