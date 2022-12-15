@@ -3,18 +3,17 @@
 
 # include "Contact.hpp"
 # include <iostream>
+#include <algorithm>
+#include <cstdlib>
 
 class	PhoneBook
 {
 	public:
 		PhoneBook(void);
-		void			displayEntries(void)	const;
-		void			displayEntry(int i)		const;
-		int				get_size(void)			const;
-		void			addEntry(std::string fields[3]);
+		void			search_contact(void);
+		void			add_entry(void);
 	private:
-		unsigned int	_size;
-		int				_insert_id;
+		int				_index;
 		Contact			_contacts[8];
 };
 

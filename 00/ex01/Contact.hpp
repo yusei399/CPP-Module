@@ -2,23 +2,31 @@
 # define CONTACT_HPP
 
 # include <string>
+# include <iostream>
+# include <iomanip>
 
 class	Contact
 {
 	public:
-		int					get_index(void)			const;
-		const std::string	&get_firstname(void)		const;
-		const std::string	&get_lastname(void)		const;
-		const std::string	&get_nickname(void)		const;
-		void				set_index(int _index);
-		void				set_firstname(std::string _firstname);
-		void				set_lastname(std::string _lastname);
-		void				set_nickname(std::string _nickname);
+		Contact();
+		~Contact();
+		int get_index(void);
+		void set_info(int index);
+		void display_header(void);
+		void display_all(void);
+		std::string slice(std::string str);
+		std::string info_name(int i);
 	private:
-		int					_index;
-		std::string			_firstname;
-		std::string			_lastname;
-		std::string			_nickname;
+		std::string	_info[5];
+		int	_index;
+		enum
+		{
+			FirstName,
+			LastName,
+			NickName,
+			PhoneNumber,
+			DarkestSecret
+		}
 };
 
 #endif
