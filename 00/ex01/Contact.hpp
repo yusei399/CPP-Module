@@ -26,7 +26,7 @@ class	Contact
 			NickName,
 			PhoneNumber,
 			DarkestSecret
-		}
+		};
 };
 
 #endif

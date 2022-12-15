@@ -1,41 +1,72 @@
 #include "Contact.hpp"
 
-int	Contact::get_index(void) const
+Contact::Contact()
 {
-	return (this->_index);
 }
 
-const std::string	&Contact::get_firstname(void) const
+Contact::~Contact()
 {
-	return (this->_firstname);
 }
 
-const std::string	&Contact::get_lastname(void) const
+void Contact::set_info(int i)
 {
-	return (this->_lastname);
+	this->_index = i + 1;
+	for (int i = FirstName; i <= DarkestSecret; i++)
+	{
+		std::cout << info_name(i) << ": ";
+		std::cin >> _info[i];
+		if (std::cin.eof())
+			std::exit(1);
+		if (_info[i].empty())
+		{
+			std::cout << "empty is not valid\n"
+						<< "retry : ";
+			std::cin >> _info[i];
+			if (std::cin.eof())
+				std::exit(1);
+		}
+	}
 }
 
-const std::string	&Contact::get_nickname(void) const
+std::string Contact::info_name(int i)
 {
-	return (this->_nickname);
+	if (i == FirstName)
+		return ("First Name");
+	else if (i == LastName)
+		return ("Last Name");
+	else if (i == NickName)
+		return ("Nick Name");
+	else if (i == PhoneNumber)
+		return ("Phone number");
+	else if (i == DarkestSecret)
+		return ("Darkest secret");
+	else
+		return (NULL);
 }
 
-void	Contact::set_index(int _index)
+int	Contact::get_index(void)
 {
-	this->_index = _index;
+	return this->_index;
 }
 
-void	Contact::set_firstname(std::string _firstname)
+std::string Contact::slice(std::string str)
 {
-	this->_firstname = _firstname;
+	if (str.length() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str);
 }
 
-void	Contact::set_lastname(std::string _lastname)
+void Contact::display_header()
 {
-	this->_lastname = _lastname;
+	std::cout << "|" << std::setw(10) << _index ;
+	std::cout << "|" << std::setw(10) << slice(_info[FirstName]);
+	std::cout << "|" << std::setw(10) << slice(_info[LastName]);
+	std::cout << "|" << std::setw(10) << slice(_info[NickName])
+			<< "|"<< std::endl;
 }
 
-void	Contact::set_nickname(std::string _nickname)
+void Contact::display_all(void)
 {
-	this->_nickname = _nickname;
+	for (int i = FirstName; i <= DarkestSecret; i++)
+		std::cout << info_name(i) << ": " << _info[i] << std::endl;
 }

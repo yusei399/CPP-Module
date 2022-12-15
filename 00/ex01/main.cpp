@@ -2,47 +2,37 @@
 
 int	main(void)
 {
-	std::string		input;
-	std::string		fields[3];
-	PhoneBook		phonebook;
-	int				search_id;
+		PhoneBook phone_book;
+	std::string input;
 
+	std::cout << "Welcome to PhoneBook! Please select commands!!\n"
+				<< "[ADD] -> you can add contact to book\n"
+				<< "[SEARCH] -> you can for contact\n"
+				<< "[EXIT] -> you can terminate\n"
+				<< std::endl;
+	int i = 1;
 	while (1)
 	{
-		std::cout << "> ";
+		if (i == 1)
+		{
+			std::cout << "command >";
+			i = 0;
+		}
 		std::getline(std::cin, input);
 		if (input == "ADD")
-		{
-			std::cout << "ENTER THE FIELDS" << std::endl;
-			std::cout << "FIRST NAME: ";
-			std::getline(std::cin, fields[0]);
-			std::cout << "LAST NAME: ";
-			std::getline(std::cin, fields[1]);
-			std::cout << "NICKNAME: ";
-			std::getline(std::cin, fields[2]);
-			phonebook.addEntry(fields);
-			std::cout << "CONTACT ADDED" << std::endl;
-		}
+			phone_book.add_entry();
 		else if (input == "SEARCH")
 		{
-			phonebook.displayEntries();
-			std::cout << "INSERT INDEX: ";
-			std::cin >> search_id;
-			if (std::cin.fail() || search_id < 0 || search_id >= phonebook.get_size())
-			{
-				std::cout << "INVALID INDEX" << std::endl;
-				std::cin.clear();
-				std::getline(std::cin, input);
-				continue ;
-			}
-			phonebook.displayEntry(search_id);
-			std::cin.clear();
-			std::getline(std::cin, input);
-			continue ;
+			phone_book.search_contact();
+			std::cout << "command >";
 		}
-		else if (input == "EXIT")
-			break ;
+		else if (input == "EXIT" || std::cin.eof())
+		{
+			std::cout << "\nEXIT" << std::endl;
+			break;
+		}
 		else
-			std::cout << "INVALID COMMAND" << std::endl;
+			std::cout << "command >";
 	}
+	return (0);
 }

@@ -9,7 +9,8 @@
 class	PhoneBook
 {
 	public:
-		PhoneBook(void);
+		PhoneBook();
+		~PhoneBook();
 		void			search_contact(void);
 		void			add_entry(void);
 	private:
