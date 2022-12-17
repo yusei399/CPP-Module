@@ -1,4 +1,4 @@
-NAME	= ex00
+NAME	= zombieee
 
 SRCS	= ${wildcard *.cpp}
 OBJS	= ${SRCS:.cpp=.o}

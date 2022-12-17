@@ -1,4 +1,4 @@
-NAME = ex04
+NAME = violence
 
 SRCS = main.cpp
 OBJS = ${SRCS:.cpp=.o}

@@ -1,4 +1,4 @@
-NAME = ex02
+NAME = brain
 
 SRCS = main.cpp 
 OBJS = ${SRCS:.cpp=.o}

@@ -2,14 +2,9 @@
 
 int	main(void)
 {
-		PhoneBook phone_book;
+	PhoneBook phone_book;
 	std::string input;
 
-	std::cout << "Welcome to PhoneBook! Please select commands!!\n"
-				<< "[ADD] -> you can add contact to book\n"
-				<< "[SEARCH] -> you can for contact\n"
-				<< "[EXIT] -> you can terminate\n"
-				<< std::endl;
 	int i = 1;
 	while (1)
 	{
