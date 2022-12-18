@@ -1,74 +1,80 @@
+
 #include "Form.hpp"
+
+Form::Form() : name_("unknown"), is_signed_(false), req_sign_(MIN_GRADE), req_exe_(MIN_GRADE)
+{
+}
+
+Form::Form(std::string name, const int req_sign, const int req_exe) : name_(name), is_signed_(false), req_sign_(req_sign), req_exe_(req_exe)
+{
+	if (req_sign > MIN_GRADE || req_exe > MIN_GRADE)
+		throw(Form::GradeTooLowException());
+	else if (req_sign < MAX_GRADE || req_exe < MAX_GRADE)
+		throw(Form::GradeTooHighException());
+}
+
+Form::Form(const Form &other) : req_sign_(other.req_sign_), req_exe_(other.req_exe_)
+{
+	*this = other;
+}
+
+Form::~Form()
+{
+}
+
+Form &Form::operator=(const Form &other)
+{
+	(void)other;
+	return *this;
+}
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("The grade is higer than the maximum possible grade(1)");
+	return HighException;
 }
-
-Form::GradeTooLowException::GradeTooLowException() : _msg("The grade is lower than the minimum possible grade (150).") {}
-
-
-Form::GradeTooLowException::GradeTooLowException(const char *_msg) : _msg(_msg) {}
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return (this->_msg);
+	return LowException;
 }
 
-Form::Form() : _name(), _sign_grade(1), _exec_grade(1), _signed(false) {}
-
-Form::Form(const std::string &name, int sign_grade, int exec_grade)
-: _name(name), _sign_grade(sign_grade), _exec_grade(exec_grade), _signed(false)
+const char *Form::AlreadySignedException::what() const throw()
 {
-	if (sign_grade < 1 || exec_grade < 1)
-		throw GradeTooHighException();
-	else if (sign_grade > 150 || exec_grade > 150)
-		throw GradeTooLowException();
+	return "this form is already signed";
 }
 
-Form::Form(const Form &copy) : _name(copy._name), _sign_grade(copy._sign_grade),
-_exec_grade(copy._exec_grade), _signed(copy._signed) {}
-
-Form::~Form() {}
-
-Form	&Form::operator=(const Form &rhs)
+void Form::beSigned(const Bureaucrat &b)
 {
-	this->_signed = rhs._signed;
-	return (*this);
+	if (b.getGrade() > req_sign_)
+		throw (Form::GradeTooLowException());
+	else if (is_signed_ == true)
+		throw(Form::AlreadySignedException());
+	is_signed_ = true;
 }
 
-const std::string &Form::getName(void)const
+std::string Form::getName(void) const
 {
-	return (this->_name);
+	return name_;
 }
 
-int Form::getSignGrade(void) const
+bool Form::getIsSigned(void) const
 {
-	return (this->_sign_grade);
+	return is_signed_;
 }
 
-int Form::getExecutionGrade(void) const
+int Form::getReqSign(void) const
 {
-	return (this->_exec_grade);
+	return req_sign_;
 }
 
-bool Form::isSigned(void) const
+int Form::getReqExe(void) const
 {
-	return (this->_signed);
+	return req_exe_;
 }
 
-std::ostream	&operator<<(std::ostream &o, const Form &f)
+std::ostream &operator<<(std::ostream &stream, const Form &F)
 {
-	o << "Form `" << f.getName() << "`, ";
-	if (!f.isSigned())
-		o << "not ";
-	o << "signed, requires Grade " << f.getSignGrade() << " to sign and " << f.getExecutionGrade() << " to execute";
-	return (o);
-}
+	stream << F.getName() << ", is_signed " << F.getIsSigned() << ", req_sign " << F.getReqSign() << ", req_exe " << F.getReqExe();
 
-void	Form::beSigned(const Bureaucrat &bureaucrat)
-{
-	if (bureaucrat.getGrade() > this->_sign_grade)
-		throw GradeTooLowException("Bureaucrat is not authorized to sign due to their grade being too low");
-	this->_signed = true;
+	return stream;
 }

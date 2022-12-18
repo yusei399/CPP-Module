@@ -3,6 +3,9 @@
 
 #include <string>
 #include <iostream> 
+#include <exception>
+#include <Form.hpp>
+class Form;
 
 class Bureaucrat
 {
@@ -17,6 +20,7 @@ public:
 
 	void incrementGrade(void);
 	void decrementGrade(void);
+	
 
 	std::string getName(void) const;
 	int getGrade(void) const;

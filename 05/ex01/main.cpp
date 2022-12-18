@@ -1,30 +1,29 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-int	main(void)
+int main(void)
 {
-	Bureaucrat	Morgan("Morgan Proctor", 19);
-	std::cout << Morgan << " appeared!" << std::endl;
-	Bureaucrat	Hermes("Hermes Conrad", 34);
-	std::cout << Hermes << " appeared!" << std::endl;
+
+	// normal pattern
 	try
 	{
-		Bureaucrat	Monster("Beholder Monster", 0);
+		Form formA("formA", 141, 100);
+		Bureaucrat A("A", 50);
+		Bureaucrat B("B", 101);
+
+		std::cout << formA << std::endl;
+		std::cout << A << std::endl;
+		std::cout << B << std::endl;
+		A.signForm(formA);
+		std::cout << formA << std::endl;
+		std::cout << A << std::endl;
+		B.signForm(formA);
+		std::cout << formA << std::endl;
+		std::cout << B << std::endl;
 	}
-	catch (const std::exception &e)
+	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << e.what() << '\n';
 	}
-	try
-	{
-		Bureaucrat	Vogel("Warden Vogel", 151);
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	Hermes.promote();
-	Hermes.promote();
-	std::cout << "Now, Hermes' grade is " << Hermes.getGrade() << std::endl;
-	Morgan.demote();
-	std::cout << "Now, Morgan's grade is " << Morgan.getGrade() << std::endl;
+	return 0;
 }

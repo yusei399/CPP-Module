@@ -1,46 +1,52 @@
 #ifndef FORM_HPP
-# define FORM_HPP
-#include <iostream>
-#include <string>
+#define FORM_HPP
 
+#include <string>
 #include "Bureaucrat.hpp"
+#define MAX_GRADE 1
+#define MIN_GRADE 150
+
+class Bureaucrat;
 
 class Form
 {
-private:
-	const std::string _name;
-	const int _sign_grade;
-	const int _exec_grade;
-	bool  _signed;
-	class	GradeTooHighException : public std::exception
-	{
-		public:
-			virtual const char *what() const throw();
-	};
-	class	GradeTooLowException : public std::exception
-	{
-		private:
-			const char	*_msg;
-		public:
-			GradeTooLowException();
-			GradeTooLowException(const char *_msg);
-			virtual const char *what() const throw();
-	};
-	Form();
-
 public:
-	Form(const std::string &name, int sign_grade, int exec_grade);
-	Form(const Form &copy);
+	Form();
+	Form(std::string,  const int, const int);
+	Form(const Form &);
 	~Form();
-	Form	&operator=(const Form &rhs);
-	const std::string &getName();
-	const std::string	&getName() const;
-	int					getSignGrade() const;
-	int					getExecutionGrade() const;
-	bool				isSigned() const;
-	void				beSigned(const Bureaucrat &bureaucrat);
+
+	Form &operator=(const Form &other);
+
+	std::string getName(void) const;
+	bool getIsSigned(void) const;
+	int getReqSign(void) const;
+	int getReqExe(void) const;
+
+	void beSigned(const Bureaucrat &);
+
+private:
+	class GradeTooHighException : public std::exception
+	{
+		virtual const char *what() const throw();
+	};
+
+	class GradeTooLowException : public std::exception
+	{
+		virtual const char *what() const throw();
+	};
+
+	class AlreadySignedException : public std::exception
+	{
+		virtual const char *what() const throw();
+	};
+
+	const std::string name_;
+	bool is_signed_;
+	const int req_sign_;
+	const int req_exe_;
 };
 
-std::ostream	&operator<<(std::ostream &o, const Form &f);
+std::ostream &operator<<(std::ostream &, const Form &);
 
-#endif
+#endif 

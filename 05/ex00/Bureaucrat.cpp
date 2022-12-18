@@ -73,3 +73,4 @@ void Bureaucrat::decrementGrade(void)
 	else if (grade_ < 1)
 		throw(Bureaucrat::GradeTooHighException());
 }
+
