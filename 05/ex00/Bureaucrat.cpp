@@ -1,64 +1,42 @@
 #include "Bureaucrat.hpp"
 
-const char *Bureaucrat::GradeTooHighException:: what() const throw()
+Bureaucrat::Bureaucrat() : name_("unknown"), grade_(150)
 {
-	return ("The grade (1)");
 }
 
-
-const char *Bureaucrat::GradeTooLowException:: what() const throw()
+Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name), grade_(grade)
 {
-	return (" The grade low (150)");
-}
-
-Bureaucrat::Bureaucrat(const std::string &name, int grade) :_name(name)
-{
-	if (grade < 1)
-		throw GradeTooHighException();
 	if (grade > 150)
-		throw GradeTooLowException();
+		throw(Bureaucrat::GradeTooLowException());
+	else if (grade < 1)
+		throw(Bureaucrat::GradeTooHighException());
 }
 
-Bureaucrat::Bureaucrat() {}
-
-Bureaucrat::~Bureaucrat() {}
-
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name), _grade(copy._grade) {}
-
-Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &rhs)
+Bureaucrat::Bureaucrat(const Bureaucrat &o)
 {
-	this->_grade = rhs._grade;
-	return (*this);
+	*this = o;
 }
 
-const	std::string	&Bureaucrat::getName() const
+Bureaucrat::~Bureaucrat()
 {
-	return (this->_name);
 }
 
-int	Bureaucrat::getGrade() const
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &o)
 {
-	return (this->_grade);
+	this->grade_ = o.grade_;
+
+	return *this;
 }
 
-void	Bureaucrat::promote()
+std::ostream &operator<<(std::ostream &stream, const Bureaucrat &instance)
 {
-	if (this->_grade - 1 >= 1)
-		this->_grade--;
-	else
-		throw GradeTooHighException();
+	stream << instance.getName() << ", bureaucrat grade" << instance.getGrade() << "";
+
+	return stream;
 }
 
-void	Bureaucrat::demote()
+std::string Bureaucrat::getName(void) const
 {
-	if (this->_grade + 1 <= 150)
-		this->_grade++;
-	else
-		throw GradeTooLowException();
+	return this->name_;
 }
 
-std::ostream	&operator<<(std::ostream &o, const Bureaucrat &b)
-{
-	o << b.getName() << ", bureaucrat grade " << b.getGrade();
-	return (o);
-}
