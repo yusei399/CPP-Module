@@ -2,29 +2,43 @@
 
 int	main(void)
 {
-	Bureaucrat	Morgan("Morgan Proctor", 19);
-	std::cout << Morgan << " appeared!" << std::endl;
-	Bureaucrat	Hermes("Hermes Conrad", 34);
-	std::cout << Hermes << " appeared!" << std::endl;
 	try
 	{
-		Bureaucrat	Monster("Beholder Monster", 0);
+		Bureaucrat A("A", 1);
+		std::cout << A << std::endl;
+		std::cout << A.getGrade() << std::endl;
+		std::cout << A.getName() << std::endl;
+		A.incrementGrade();
+		std::cout << A << std::endl;
+		A.decrementGrade();
+		std::cout << A << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Bureaucrat B("B", 151);
+		std::cout << B << std::endl;
+		std::cout << B.getGrade() << std::endl;
+		std::cout << B.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Bureaucrat C("C", 0);
+		std::cout << C << std::endl;
+		std::cout << C.getGrade() << std::endl;
+		std::cout << C.getName() << std::endl;
 	}
 	catch (const std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << e.what() << '\n';
 	}
-	try
-	{
-		Bureaucrat	Vogel("Warden Vogel", 151);
-	}
-	catch (const std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	Hermes.promote();
-	Hermes.promote();
-	std::cout << "Now, Hermes' grade is " << Hermes.getGrade() << std::endl;
-	Morgan.demote();
-	std::cout << "Now, Morgan's grade is " << Morgan.getGrade() << std::endl;
+
+	return 0;
 }

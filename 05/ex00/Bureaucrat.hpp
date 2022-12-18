@@ -34,6 +34,6 @@ private:
 	int grade_;
 };
 
-std::ostream	&operator<<(std::ostream &o, const Bureaucrat &b);
+std::ostream &operator<<(std::ostream &, const Bureaucrat &);
 
 #endif

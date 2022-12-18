@@ -40,6 +40,11 @@ std::string Bureaucrat::getName(void) const
 	return this->name_;
 }
 
+int Bureaucrat::getGrade(void) const
+{
+	return this->grade_;
+}
+
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
