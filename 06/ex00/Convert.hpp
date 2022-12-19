@@ -18,7 +18,6 @@ class Convert
     bool        error;
 
 	private:
-		void parse();
 	public:
 		Convert();
 		Convert(const Convert&);
@@ -26,7 +25,7 @@ class Convert
 		Convert& operator=(const Convert&);
 		~Convert();
 
-
+		void parse();
 		std::string to_char() const;
 		std::string to_int() const;
 		std::string to_float() const;
