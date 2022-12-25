@@ -77,6 +77,8 @@
 		"memory_resource": "cpp",
 		"stop_token": "cpp",
 		"cinttypes": "cpp",
-		"iomanip": "cpp"
+		"iomanip": "cpp",
+		"fstream": "cpp",
+		"stack": "cpp"
 	}
 }

@@ -11,4 +11,3 @@ Zombie::~Zombie(void)
 {
 	std::cout << this->_name << "name" << std::endl;
 }
-
