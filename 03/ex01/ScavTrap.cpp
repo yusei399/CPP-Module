@@ -4,12 +4,12 @@
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << "[ScavTrap " << this->_name << "] (destructed) I'm dead, boo-hoo..." << std::endl;
+	std::cout << "ScavTrap " << this->_name << "destructed called()" << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string &_name) : ClapTrap(_name)
 {
-	std::cout << "[ScavTrap " << this->_name << "] (constructed) Kiss my shiny metal ass!" << std::endl;
+	std::cout << "ScavTrap " << this->_name << "constructed called()" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
