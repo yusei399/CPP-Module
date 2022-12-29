@@ -1,7 +1,5 @@
 #include "ScavTrap.hpp"
 
-// ScavTrap::ScavTrap(void) {}
-
 ScavTrap::~ScavTrap(void)
 {
 	std::cout << "ScavTrap " << this->_name << "destructer called()" << std::endl;

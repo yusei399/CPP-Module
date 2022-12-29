@@ -13,7 +13,7 @@ ClapTrap::ClapTrap(const std::string &_name) : _name(_name), _hp(10), _energy(10
 
 ClapTrap::ClapTrap(const ClapTrap &copy) :  _name(copy._name), _hp(copy._hp), _energy(copy._energy), _damage(copy._damage)
 {
-	std::cout << "[Claptrap " << this->_name << "copy_constructed called()" << std::endl;
+	std::cout << "Claptrap " << this->_name << "copy_constructed called()" << std::endl;
 }
 
 ClapTrap	&ClapTrap::operator=(ClapTrap &rhs)
