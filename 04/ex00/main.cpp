@@ -10,7 +10,7 @@ int	main()
 	std::cout << "meta's type: " << meta->getType() << std::endl;
 	std::cout << "j's type: " << j->getType() << std::endl;
 	std::cout << "i's type: " << i->getType() << std::endl;
-	i->makeSound(); //will output the cat sound!
+	i->makeSound(); 
 	j->makeSound();
 	meta->makeSound();
 
