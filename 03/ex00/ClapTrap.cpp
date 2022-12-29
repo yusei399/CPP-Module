@@ -29,7 +29,7 @@ void	ClapTrap::attack(std::string const &target)
 {
 	if (this->_energy >= 2)
 	{
-		std::cout << "Claptrap " << this->_name << "(attacking " << target << ", dealing " << this->_damage << " damage) Demolition commenced." << std::endl;
+		std::cout << "Claptrap " << this->_name << "attacking " << target << "dealing " << this->_damage << " damage Demolition commenced." << std::endl;
 		this->_energy -= 2;
 	}
 }
@@ -40,11 +40,11 @@ void	ClapTrap::takeDamage(unsigned int amount)
 		this->_hp = 0;
 	else
 		this->_hp -= amount;
-	std::cout << "Claptrap " << this->_name << "(taking " << amount << " damage; hp now: " << this->_hp << ") It burns..." << std::endl;
+	std::cout << "Claptrap " << this->_name << "taking " << amount << " damage: hp now: " << this->_hp << "It burns..." << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	this->_hp += amount;
-	std::cout << "Claptrap " << this->_name << "(repaired " << amount << " points; hp now: " << this->_hp << ") I love it." << std::endl;
+	std::cout << "Claptrap " << this->_name << "repaired " << amount << " points: hp now: " << this->_hp << "I love it." << std::endl;
 }

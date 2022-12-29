@@ -2,16 +2,16 @@ NAME = ex01
 
 SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJS = ${SRCS:.cpp=.o}
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: ${NAME}
 
 .cpp.o:
-	@${CC} ${CFLAGS} -c $< -o $(<:.cpp=.o)
+	@${CXX} ${CXXFLAGS} -c $< -o $(<:.cpp=.o)
 
 ${NAME} : ${OBJS}
-	@${CC} ${OBJS} ${CFLAGS} -o ${NAME}
+	@${CXX} ${OBJS} ${CXXFLAGS} -o ${NAME}
 
 clean:
 	@${RM} ${OBJS}
