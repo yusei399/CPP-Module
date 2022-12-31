@@ -14,4 +14,8 @@ int	main(void)
 	turret3.attack("Agnesa");
 	turret1.takeDamage(10);
 	turret1.beRepaired(10);
+
+	std::cout << "------------------------------------" << std::endl;
+	turret1 = turret2;
+	turret1.attack("hforhfreuherouhr");
 }

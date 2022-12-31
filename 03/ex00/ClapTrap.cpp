@@ -27,11 +27,8 @@ ClapTrap	&ClapTrap::operator=(ClapTrap &rhs)
 
 void	ClapTrap::attack(std::string const &target)
 {
-	if (this->_energy >= 2)
-	{
 		std::cout << "Claptrap " << this->_name << "attacking " << target << ", dealing " << this->_damage << " damage) Demolition commenced." << std::endl;
-		this->_energy -= 2;
-	}
+		this->_energy -= 1;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -46,5 +43,6 @@ void	ClapTrap::takeDamage(unsigned int amount)
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	this->_hp += amount;
+	this->_energy -= 1;
 	std::cout << "Claptrap " << this->_name << "repaired " << amount << " points; hp now: " << this->_hp << "I love it." << std::endl;
 }

@@ -13,7 +13,7 @@ class	ScavTrap : public ClapTrap
 		~ScavTrap(void);
 		void	attack(std::string const &target);
 		void	guardGate(void);
-		using	ClapTrap::operator=;
+		ScavTrap &operator=(const ScavTrap &rhs);
 };
 
 #endif
