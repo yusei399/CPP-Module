@@ -1,6 +1,10 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void){}
+DiamondTrap::DiamondTrap(void) : FragTrap()
+{
+	this->_hp = FragTrap::_hp;
+	
+}
 
 DiamondTrap::~DiamondTrap(void)
 {
@@ -17,6 +21,20 @@ DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy._name + "_clap
 {
 	std::cout << "DiamondTrap " << this->_name << "copy_constructed called()" << std::endl;
 }
+
+DiamondTrap &DiamondTrap::operator=(const DiamondTrap &rhs)
+{
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->_hp = rhs._hp;
+		this->_energy = rhs._energy;
+		this->_damage = rhs._damage;
+		return (*this);
+	}
+}
+
 
 void	DiamondTrap::whoAmI(void)
 {

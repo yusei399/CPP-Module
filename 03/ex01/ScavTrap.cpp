@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() : ClapTrap()
 {
 	_hp = 100;
 	_energy = 50;
@@ -34,10 +34,15 @@ void	ScavTrap::guardGate(void)
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &rhs)
 {
-	this->_hp = rhs._hp;
-	this->_energy = rhs._energy;
-	this->_damage = rhs._damage;
-	return (*this);
+	if (this == &rhs)
+		return (*this);
+	else 
+	{
+		this->_hp = rhs._hp;
+		this->_energy = rhs._energy;
+		this->_damage = rhs._damage;
+		return (*this);
+	}
 }
 
 void	ScavTrap::attack(std::string const &target)

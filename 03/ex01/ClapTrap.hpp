@@ -11,8 +11,8 @@ class ClapTrap
 		unsigned int	_hp;
 		unsigned int	_energy;
 		unsigned int	_damage;
-		ClapTrap(void);
 	public:
+		ClapTrap(void);
 		ClapTrap(const std::string &_name);
 		ClapTrap(const ClapTrap &copy);
 		~ClapTrap(void);

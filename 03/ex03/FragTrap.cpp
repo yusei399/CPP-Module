@@ -1,5 +1,9 @@
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap() : ClapTrap()
+{
+}
+
 FragTrap::~FragTrap(void)
 {
 	std::cout << "FragTrap " << this->_name << "destructed called()" << std::endl;

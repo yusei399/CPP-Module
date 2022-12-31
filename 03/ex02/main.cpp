@@ -13,6 +13,5 @@ int	main(void)
 	turret1.attack("Gevorg");
 	turret3.attack("Agnesa");
 	turret1.takeDamage(10);
-	turret1.beRepaired(10);\
-
+	turret1.beRepaired(10);
 }

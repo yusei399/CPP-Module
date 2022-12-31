@@ -5,15 +5,14 @@
 
 class	ScavTrap : virtual public ClapTrap
 {
-	protected:
-		ScavTrap(void);
 	public:
+		ScavTrap(void);
 		ScavTrap(const std::string &_name);
 		ScavTrap(const ScavTrap &copy);
 		~ScavTrap(void);
-		void	attack(std::string const &target);
 		void	guardGate(void);
-		using	ClapTrap::operator=;
+		void	attack(std::string const &target); 
+		ScavTrap &operator=(const ScavTrap &rhs);
 };
 
 #endif
