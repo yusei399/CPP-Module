@@ -3,7 +3,8 @@
 DiamondTrap::DiamondTrap(void) : FragTrap()
 {
 	this->_hp = FragTrap::_hp;
-	
+	this->_energy = ScavTrap::_energy;
+	this->_damage = FragTrap::_damage;
 }
 
 DiamondTrap::~DiamondTrap(void)
