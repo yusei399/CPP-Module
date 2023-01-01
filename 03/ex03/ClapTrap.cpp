@@ -41,10 +41,15 @@ void	ClapTrap::attack(std::string const &target)
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (static_cast<int>(this->_hp) - static_cast<int>(amount) < 0)
+	{
 		this->_hp = 0;
+		std::cout << "Claptrap " << this->_name << "taking " << amount << " damage; hp now: " << this->_hp << "It died" << std::endl; 
+	}	
 	else
+	{
 		this->_hp -= amount;
-	std::cout << "Claptrap " << this->_name << "taking " << amount << " damage; hp now: " << this->_hp << "It burns..." << std::endl;
+		std::cout << "Claptrap " << this->_name << "taking " << amount << " damage; hp now: " << this->_hp << "survived" << std::endl;
+	}
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
