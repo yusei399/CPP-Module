@@ -14,7 +14,6 @@ DiamondTrap::~DiamondTrap(void)
 
 DiamondTrap::DiamondTrap(const std::string &name) : ClapTrap(name + "_clap_name"), ScavTrap(name + "_clap_name"), FragTrap(name + "_clap_name"), _name(name)
 {
-	this->_energy = 50;
 	std::cout << "DiamondTrap " << this->_name << "constructer called()" << std::endl;
 }
 
