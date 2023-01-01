@@ -22,11 +22,16 @@ ClapTrap::ClapTrap(const ClapTrap &copy) :  _name(copy._name), _hp(copy._hp), _e
 
 ClapTrap	&ClapTrap::operator=(ClapTrap &rhs)
 {
-	this->_hp = rhs._hp;
-	this->_energy = rhs._energy;
-	this->_damage = rhs._damage;
-	std::cout << "Claptrap " << this->_name << "being assigned Finally, equality was achieved." << std::endl;
-	return (*this);
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->_hp = rhs._hp;
+		this->_energy = rhs._energy;
+		this->_damage = rhs._damage;
+		std::cout << "Claptrap " << this->_name << "being assigned Finally, equality was achieved." << std::endl;
+		return (*this);
+	}
 }
 
 void	ClapTrap::attack(std::string const &target)

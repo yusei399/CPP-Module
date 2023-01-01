@@ -28,10 +28,15 @@ FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 
 FragTrap &FragTrap::operator=(const FragTrap &rhs)
 {
-	this->_hp = rhs._hp;
-	this->_damage = rhs._damage;
-	this->_energy = rhs._energy;
-	return (*this);
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->_hp = rhs._hp;
+		this->_damage = rhs._damage;
+		this->_energy = rhs._energy;
+		return (*this);
+	}
 }
 
 void	FragTrap::highFivesGuys(void)
