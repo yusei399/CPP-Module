@@ -20,10 +20,15 @@ ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &rhs)
 {
-	this->_hp = rhs._hp;
-	this->_energy = rhs._energy;
-	this->_damage = rhs._damage;
-	return (*this);
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->_hp = rhs._hp;
+		this->_energy = rhs._energy;
+		this->_damage = rhs._damage;
+		return (*this);
+	}
 }
 
 void	ScavTrap::guardGate(void)
