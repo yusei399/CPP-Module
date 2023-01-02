@@ -1,5 +1,4 @@
-NAME = ex00
-
+NAME = ex01
 
 SRCS = Animal.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Dog.cpp main.cpp
 OBJS = ${SRCS:.cpp=.o}

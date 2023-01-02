@@ -13,13 +13,13 @@ Animal::~Animal()
 Animal::Animal(const std::string &type)
 {
 	this->type = type;
-	std::cout << "Animal created with arg ctor" << std::endl;
+	std::cout << "Animal created with type" << std::endl;
 }
 
 Animal::Animal(const Animal &copy)
 {
 	this->type = copy.type;
-	std::cout << "Animal created with arg ctor" << std::endl;
+	std::cout << "Animal copy called()" << std::endl;
 }
 
 Animal &Animal::operator=(const Animal &rhs)

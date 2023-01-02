@@ -5,12 +5,12 @@
 
 class Cat : public Animal
 {
-public:
-	Cat();
-	~Cat();
-	Cat(const Cat&);
-	using Animal::operator=;
-	void makeSound()const;
+	public:
+		Cat();
+		~Cat();
+		Cat(const Cat&);
+		using Animal::operator=;
+		void makeSound()const;
 };
 
 #endif

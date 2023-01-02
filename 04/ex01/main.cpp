@@ -2,6 +2,12 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
+// __attribute__((destructor))
+// static void destructor(void)
+// {
+// 	system("leaks -q ex01");
+// }
+
 int	main()
 {
 	Animal	*pointers[20];

@@ -24,6 +24,7 @@ WrongAnimal::WrongAnimal(const WrongAnimal &copy)
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &rhs)
 {
+	
 	this->type = rhs.type;
 	return (*this);
 }

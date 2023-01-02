@@ -8,7 +8,19 @@ Cat::Cat() : Animal("Cat")
 
 Cat::~Cat()
 {
+	delete this->_brain;
 	std::cout << this->type << "destory" << std::endl;
+}
+
+Cat &Cat::operator=(const Cat &rhs)
+{
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->_brain = rhs._brain;
+		return(*this);
+	}
 }
 
 Cat::Cat(const Cat&) : Animal("Cat")
