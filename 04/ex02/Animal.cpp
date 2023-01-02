@@ -2,24 +2,24 @@
 
 Animal::Animal()
 {
-	std::cout << "Animal create" << std::endl;
+	std::cout << "[Animal] create" << std::endl;
 }
 
 Animal::~Animal()
 {
-	std::cout << "Animal destroy" << std::endl;
+	std::cout << "[Animal] destroy" << std::endl;
 }
 
 Animal::Animal(const std::string &type)
 {
 	this->type = type;
-	std::cout << "Animal created with type" << std::endl;
+	std::cout << "[Animal] created with type" << std::endl;
 }
 
 Animal::Animal(const Animal &copy)
 {
 	this->type = copy.type;
-	std::cout << "Animal created with type" << std::endl;
+	std::cout << "[Animal] created with type" << std::endl;
 }
 
 Animal &Animal::operator=(const Animal &rhs)

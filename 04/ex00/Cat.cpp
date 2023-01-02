@@ -2,17 +2,17 @@
 
 Cat::Cat() : Animal("Cat")
 {
-	std::cout << this->type << "create with defaut" << std::endl;
+	std::cout << "[" << this->type << "]" << "default constructer is called()" << std::endl;
 }
 
 Cat::~Cat()
 {
-	std::cout << this->type << "destory" << std::endl;
+	std::cout << "[" << this->type << "]" << "destructer is called()" << std::endl;
 }
 
 Cat::Cat(const Cat&) : Animal("Cat")
 {
-	std::cout << this->type << " create with copy" << std::endl;
+	std::cout <<"["<< this->type << "]"<< "copy constructer is called()" << std::endl;
 }
 
 void Cat::makeSound() const

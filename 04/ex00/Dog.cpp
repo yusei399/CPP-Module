@@ -2,17 +2,17 @@
 
 Dog::Dog() :Animal("Dog")
 {
-	std::cout << "Animal create" << std::endl;
+	std::cout << "[Dog] default constructer is called()" << std::endl;
 }
 
 Dog::~Dog()
 {
-	std::cout << this->type << "destory" << std::endl;
+	std::cout << "["<< this->type << "]" << "destructer is called()" << std::endl;
 }
 
 Dog::Dog(const Dog&) : Animal("Dog")
 {
-	std::cout << this->type << "create" << std::endl;
+	std::cout << "["<< this->type << "]" << "copy constructer is called()" << std::endl;
 }
 
 void Dog::makeSound() const
