@@ -1,6 +1,6 @@
 NAME = ex03
 
-SRCS = AMateria.cpp main.cpp
+SRCS = AMateria.Character.cpp Ice.cpp ICharacter.cpp  main.cpp
 OBJS = ${SRCS:.cpp=.o}
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
