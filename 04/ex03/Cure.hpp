@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 
-class Cure
+class Cure : public AMateria
 {
 	public:
 		Cure(/* args */);
