@@ -10,7 +10,6 @@ AMateria::AMateria(std::string const &type) : _type(type)
 	std::cout << "AMateria Param is called()" << std::endl; 
 }
 
-
 AMateria::~AMateria()
 {
 	std::cout << "destructer is called()" << std::endl;
@@ -18,6 +17,7 @@ AMateria::~AMateria()
 
 AMateria::AMateria(const AMateria &copy)
 {
+	*this = copy;
 	std::cout << "copy constructer is called()" << std::endl;
 }
 

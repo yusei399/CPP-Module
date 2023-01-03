@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "ICharacter.hpp"
+class ICharacter; 
 
 
 class AMateria  
@@ -17,7 +18,7 @@ class AMateria
 		virtual ~AMateria();
 		std::string const & getType() const;
 		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
+		virtual void use(ICharacter&target);
 	protected:
 		std::string _type;
 };

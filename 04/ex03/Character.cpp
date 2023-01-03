@@ -9,6 +9,13 @@ Character::Character()
 	}
 }
 
+Character::Character(std::string type) : _type(type)
+{
+	std::cout << "[Character] Pram Constructor called" << std::endl;
+	for (size_t i = 0; i < 4; i++)
+		_inventry[i] = 0;
+}
+
 Character::~Character()
 {
 	for (int i = 0; i < 4; i++)
@@ -21,7 +28,7 @@ Character::~Character()
 	std::cout << "destructer is called()" << std::endl;
 }
 
-Character::Character(const Character &va_copy)
+Character::Character(const Character &copy)
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -31,6 +38,7 @@ Character::Character(const Character &va_copy)
 		}
 	}
 	std::cout << "copy constructer is called()" << std::endl;
+	*this = copy;
 }
 
 Character &Character::operator=(const Character &rhs)
@@ -63,12 +71,10 @@ void Character::equip(AMateria *m)
 		{
 			_inventry[i] = m;
 			std::cout << "AMatemria is equipped" << std::endl;
-		}
-		else
-		{
-			std::cout << "There is AMateria in this index" << std::endl;
+			return;
 		}
 	}
+	std::cout << "There is AMateria in this index" << std::endl;
 }
 
 
@@ -87,7 +93,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter &target)
 {
-	if (idx < 0 | idx > 4)
+	if (idx < 0 || idx > 4)
 		std::cout << "Invalid Index" << std::endl;
 	else if (_inventry[idx] != 0)
 		_inventry[idx]->use(target);
