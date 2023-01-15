@@ -16,6 +16,18 @@ WrongCat::WrongCat(const WrongCat&) : WrongAnimal("WrongCat")
 	std::cout << this->type << "create copy" << std::endl;
 }
 
+
+WrongCat &WrongCat::operator=(const WrongCat &rhs)
+{
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->type;
+		return (*this);
+	}
+}
+
 void	WrongCat::makeSound() const
 {
 	std::cout << "* woem! wrong cat noises *" << std::endl;

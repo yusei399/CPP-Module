@@ -26,7 +26,7 @@ Cat &Cat::operator=(const Cat &rhs)
 		return (*this);
 	else
 	{
-		this->type;
+		this->type = rhs.type;
 		return (*this);
 	}
 }

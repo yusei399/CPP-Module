@@ -21,7 +21,7 @@ Dog	&Dog::operator=(const Dog &rhs)
 		return (*this);
 	else
 	{
-		this->type;
+		this->type = rhs.type;
 		return (*this);
 	}
 }

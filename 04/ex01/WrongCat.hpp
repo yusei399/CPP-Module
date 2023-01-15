@@ -12,7 +12,7 @@ public:
 	~WrongCat();
 	WrongCat(const WrongCat&);
 
-	WrongAnimal &operator=(WrongAnimal &rhs);
+	WrongCat &operator=(const WrongCat &rhs);
 	void makeSound() const;
 };
 

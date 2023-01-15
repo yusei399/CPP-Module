@@ -9,7 +9,7 @@ class Cat : public Animal
 		Cat();
 		~Cat();
 		Cat(const Cat&);
-		Animal &operator=(Animal &rhs);
+		Cat	&operator=(const Cat &rhs);
 		void makeSound()const;
 };
 
