@@ -22,12 +22,12 @@ WrongCat &WrongCat::operator=(const WrongCat &rhs)
 		return (*this);
 	else
 	{
-		this->type;
+		this->type = rhs.type;
 		return (*this);
 	}
 }
 
 void	WrongCat::makeSound() const
 {
-	std::cout << "* woem! wrong cat noises *" << std::endl;
+	std::cout << "wrong cat noises" << std::endl;
 }

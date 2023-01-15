@@ -17,7 +17,7 @@ Cat::Cat(const Cat&) : Animal("Cat")
 
 void Cat::makeSound() const
 {
-	std::cout << "* meow! cat noises *" << std::endl;
+	std::cout << "meow" << std::endl;
 }
 
 Cat &Cat::operator=(const Cat &rhs)

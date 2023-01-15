@@ -17,5 +17,5 @@ Dog::Dog(const Dog&) : Animal("Dog")
 
 void Dog::makeSound() const
 {
-	std::cout << "* bark! Dog noises *" << std::endl;
+	std::cout << "bark" << std::endl;
 }
