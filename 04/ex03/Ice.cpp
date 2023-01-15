@@ -18,8 +18,13 @@ Ice::~Ice()
 
 Ice &Ice::operator=(const Ice &rhs)
 {
-	(void)rhs;
-	return (*this);
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		(void)rhs;
+		return (*this);
+	}
 }
 
 AMateria *Ice::clone(void) const

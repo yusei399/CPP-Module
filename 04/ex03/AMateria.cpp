@@ -23,8 +23,13 @@ AMateria::AMateria(const AMateria &copy)
 
 AMateria &AMateria::operator=(const AMateria &rhs)
 {
-	this->_type = rhs._type;
-	return (*this);
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->_type = rhs._type;
+		return (*this);
+	}
 }
 
 std::string const &AMateria::getType() const

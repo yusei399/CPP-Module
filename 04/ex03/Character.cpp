@@ -43,6 +43,8 @@ Character::Character(const Character &copy)
 
 Character &Character::operator=(const Character &rhs)
 {
+	if (this == &rhs)
+		return(*this);
 	this->_type = rhs.getName();
 	for (int i = 0; i < 4; i++)
 	{

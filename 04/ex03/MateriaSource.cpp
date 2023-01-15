@@ -27,6 +27,8 @@ MateriaSource::~MateriaSource()
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &rhs)
 {
+	if (this == &rhs)
+		return (*this);
 	for (size_t i = 0; i < 4; i++)
 	{
 		delete this->_materia[i];
