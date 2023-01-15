@@ -19,6 +19,8 @@ Brain::Brain(const Brain &copy)
 
 Brain	&Brain::operator=(const Brain &rhs)
 {
+	if (this == &rhs)
+		return (*this);
 	for (int i = 0; i < 100; i++)
 		this->ideas[i] = rhs.ideas[i];
 	return (*this);

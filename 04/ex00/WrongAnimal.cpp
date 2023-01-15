@@ -24,8 +24,13 @@ WrongAnimal::WrongAnimal(const WrongAnimal &copy)
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &rhs)
 {
-	this->type = rhs.type;
-	return (*this);
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->type = rhs.type;
+		return (*this);
+	}
 }
 
 const std::string	&WrongAnimal::getType() const
