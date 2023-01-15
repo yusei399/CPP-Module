@@ -25,7 +25,7 @@ Animal::Animal(const Animal &copy)
 Animal &Animal::operator=(const Animal &rhs)
 {
 
-	if (this == rhs)
+	if (this == &rhs)
 		return (*this);
 	else
 	{
