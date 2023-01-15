@@ -17,7 +17,7 @@ MateriaSource::MateriaSource(const MateriaSource &copy)
 
 MateriaSource::~MateriaSource()
 {
-	std::cout << "destructer is called ()" << std::endl;
+	// std::cout << "destructer is called ()" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		if (_materia[i] != 0)
@@ -27,8 +27,6 @@ MateriaSource::~MateriaSource()
 
 MateriaSource &MateriaSource::operator=(const MateriaSource &rhs)
 {
-	if (this == &rhs)
-		return (*this);
 	for (size_t i = 0; i < 4; i++)
 	{
 		delete this->_materia[i];

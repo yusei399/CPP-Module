@@ -13,7 +13,7 @@ int	main()
 	cat->makeSound(); 
 	dog->makeSound();
 	meta->makeSound();
-
+	std::cout << "cat's type: " << cat->getType() << std::endl;
 	cat->operator=(*dog);
 	std::cout << "After `cat = dog;`:" << std::endl;
 	std::cout << "dog's type: " << dog->getType() << std::endl;

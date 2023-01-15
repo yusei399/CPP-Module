@@ -25,7 +25,7 @@ Character::~Character()
 			delete _inventry[i];
 		}
 	}
-	std::cout << "destructer is called()" << std::endl;
+	// std::cout << "destructer is called()" << std::endl;
 }
 
 Character::Character(const Character &copy)

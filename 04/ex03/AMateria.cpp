@@ -12,7 +12,7 @@ AMateria::AMateria(std::string const &type) : _type(type)
 
 AMateria::~AMateria()
 {
-	std::cout << "destructer is called()" << std::endl;
+	// std::cout << "destructer is called()" << std::endl;
 }
 
 AMateria::AMateria(const AMateria &copy)

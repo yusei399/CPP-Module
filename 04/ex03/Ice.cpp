@@ -13,7 +13,7 @@ Ice::Ice(const Ice &copy) : AMateria("ice")
 
 Ice::~Ice()
 {
-	std::cout << "destructer is called()" << std::endl;
+	// std::cout << "destructer is called()" << std::endl;
 }
 
 Ice &Ice::operator=(const Ice &rhs)

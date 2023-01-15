@@ -1,6 +1,11 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include "WrongCat.hpp"
+__attribute__((destructor))
+static void destructor(void)
+{
+	system("leaks -q ex02");
+}
 
 int	main()
 {

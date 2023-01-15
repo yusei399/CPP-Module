@@ -1,5 +1,5 @@
 #include "Cure.hpp"
-
+#include <stdio.h>
 Cure::Cure() : AMateria("cure")
 {
 	std::cout << "default constructer is called" << std::endl;
@@ -14,7 +14,7 @@ Cure::Cure(const Cure &copy) : AMateria("cure")
 
 Cure::~Cure()
 {
-	std::cout << "destructer is called " << std::endl;
+	// std::cout << "destructer is called " << std::endl;
 }
 
 
@@ -32,7 +32,6 @@ Cure &Cure::operator=(const Cure &rhs)
 AMateria *Cure::clone(void) const
 {
 	AMateria *clone = new Cure();
-
 	return (clone);
 }
 
