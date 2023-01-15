@@ -11,14 +11,13 @@ class MateriaSource : public IMateriaSource
 	private:
 		AMateria *_materia[4];
 	public:
-		MateriaSource(/* args */);
+		MateriaSource();
 		MateriaSource(const MateriaSource &copy);
 		~MateriaSource();
 
 		MateriaSource &operator=(const MateriaSource &rhs);
 		void learnMateria(AMateria *);
 		AMateria *createMateria(std::string const &type);
-
 };
 
 

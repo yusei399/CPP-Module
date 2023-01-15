@@ -19,3 +19,14 @@ void Cat::makeSound() const
 {
 	std::cout << "* meow! cat noises *" << std::endl;
 }
+
+Cat &Cat::operator=(const Cat &rhs)
+{
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->type;
+		return (*this);
+	}
+}

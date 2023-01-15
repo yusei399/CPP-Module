@@ -5,15 +5,13 @@
 
 class WrongCat : public WrongAnimal
 {
-private:
-	/* data */
-public:
-	WrongCat();
-	~WrongCat();
-	WrongCat(const WrongCat&);
+	public:
+		WrongCat();
+		~WrongCat();
+		WrongCat(const WrongCat&);
 
-	using WrongAnimal::operator=;
-	void makeSound() const;
+		WrongAnimal &operator=(WrongAnimal &rhs);
+		void makeSound() const;
 };
 
 #endif

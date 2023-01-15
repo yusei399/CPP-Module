@@ -9,7 +9,7 @@ class Cat : public Animal
 		Cat();
 		~Cat();
 		Cat(const Cat&);
-		using Animal::operator=;
+		Animal &operator=(Animal &rhs);
 		void makeSound()const;
 };
 

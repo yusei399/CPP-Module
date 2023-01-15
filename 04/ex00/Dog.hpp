@@ -9,7 +9,7 @@ public:
 	Dog();
 	~Dog();
 	Dog(const Dog&);
-	using Animal::operator=;
+	Animal	&operator=(Animal &rhs);
 	void	makeSound() const;
 
 };

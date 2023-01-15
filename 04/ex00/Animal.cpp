@@ -24,8 +24,13 @@ Animal::Animal(const Animal &copy)
 
 Animal &Animal::operator=(const Animal &rhs)
 {
-	this->type = rhs.type;
-	return (*this);
+	if (this == &rhs)
+		return(*this);
+	else
+	{
+		this->type = rhs.type;
+		return (*this);
+	}
 }
 
 const std::string &Animal::getType()const
