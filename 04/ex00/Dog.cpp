@@ -15,6 +15,17 @@ Dog::Dog(const Dog&) : Animal("Dog")
 	std::cout << "["<< this->type << "]" << "copy constructer is called()" << std::endl;
 }
 
+Dog	&Dog::operator=(const Dog &rhs)
+{
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->type;
+		return (*this);
+	}
+}
+
 void Dog::makeSound() const
 {
 	std::cout << "* bark! Dog noises *" << std::endl;
