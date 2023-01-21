@@ -48,7 +48,6 @@ void ShrubberyCreationForm::putchar(int i, int j, int height, std::ostream &o) c
 				o << ' ';
 		}
 	}
-	std::cout << "\n";
 }
 
 void	ShrubberyCreationForm::draw_tree(std::ostream &o) const
@@ -76,7 +75,16 @@ void	ShrubberyCreationForm::draw_tree(int i, int j, int height, std::ostream &o)
 
 void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
-	this->check_executor(executor);
-	std::ofstream	o(this->getTarget() + "_shrubbery", std::ofstream::out);
-	this->draw_tree(o);
+	
+	if (this->check_executor(executor))
+	{
+		std::ofstream file((getTarget() + "_shrubbery").c_str());
+		if (file.is_open())
+		{
+			file << asciiTree << std::endl;
+			file.close();
+		}
+		else
+			std::cerr << "Unable to open file" << std::endl;
+	}
 }

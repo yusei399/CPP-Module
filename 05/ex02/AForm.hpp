@@ -37,7 +37,7 @@ class	AForm
 		AForm();
 		AForm(const std::string &name, const std::string &target, int sign_grade, int exec_grade);
 		AForm(const AForm &copy);
-		void				check_executor(const Bureaucrat &executor) const;
+		bool			check_executor(const Bureaucrat &executor) const;
 	public:
 		virtual ~AForm();
 		AForm				&operator=(const AForm &rhs);
