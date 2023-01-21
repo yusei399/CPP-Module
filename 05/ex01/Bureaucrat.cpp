@@ -25,9 +25,13 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
-	this->grade_ = other.grade_;
-
-	return *this;
+	if (this == &&rhs)
+		return (*this);
+	else
+	{
+		this->grade_ = other.grade_;
+		return *this;
+	}
 }
 
 std::ostream &operator<<(std::ostream &stream, const Bureaucrat &instance)

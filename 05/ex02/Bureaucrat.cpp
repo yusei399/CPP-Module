@@ -27,8 +27,13 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name), _grade(copy.
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &rhs)
 {
-	this->_grade = rhs._grade;
-	return (*this);
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->_grade = rhs._grade;
+		return (*this);
+	}
 }
 
 const std::string	&Bureaucrat::getName() const
