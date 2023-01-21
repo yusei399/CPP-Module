@@ -7,35 +7,35 @@
 int	main()
 {
 	srand(time(0));
-	ShrubberyCreationForm	shrub("PlanetExpress");
+	ShrubberyCreationForm	shrubbery("PlanetExpress");
 	RobotomyRequestForm		robotomy("Bender");
-	PresidentialPardonForm	pardon("Turanga Leela");
+	PresidentialPardonForm	presidential("Turanga Leela");
 
-	Bureaucrat				Mica("Mica Hilson", 145);
-	Bureaucrat				Brian("Brian Ellison", 137);
-	Bureaucrat				Karin("Karin Markides", 1);
+	Bureaucrat				Yusei("Yusei", 145);
+	Bureaucrat				Eiki("Eiki", 137);
+	Bureaucrat				Susui("Susui", 1);
 
-	std::cout << Mica << std::endl << Brian << std::endl << Karin << std::endl;
-	std::cout << shrub << std::endl;
-	Karin.executeForm(shrub);
-	Mica.signForm(shrub);
-	Mica.executeForm(shrub);
-	Brian.executeForm(shrub);
-	Karin.executeForm(shrub);
-	std::cout << shrub << std::endl;
+	std::cout << Yusei << std::endl << Eiki << std::endl << Susui << std::endl;
+	std::cout << shrubbery << std::endl;
+	Susui.executeForm(shrubbery);
+	Yusei.signForm(shrubbery);
+	Yusei.executeForm(shrubbery);
+	Eiki.executeForm(shrubbery);
+	Susui.executeForm(shrubbery);
+	std::cout << shrubbery << std::endl;
 
 	std::cout << std::endl;
 
 	std::cout << robotomy << std::endl;
-	Brian.signForm(robotomy);
-	Karin.signForm(robotomy);
-	Karin.executeForm(robotomy);
-	Karin.executeForm(robotomy);
-	Karin.executeForm(robotomy);
+	Eiki.signForm(robotomy);
+	Susui.signForm(robotomy);
+	Susui.executeForm(robotomy);
+	Susui.executeForm(robotomy);
+	Susui.executeForm(robotomy);
 
 	std::cout << std::endl;
 
-	std::cout << pardon << std::endl;
-	Karin.signForm(pardon);
-	Karin.executeForm(pardon);
+	std::cout << presidential << std::endl;
+	Susui.signForm(presidential);
+	Susui.executeForm(presidential);
 }
