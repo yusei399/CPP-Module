@@ -1,18 +1,17 @@
-#include <Bureaucrat.hpp>
-#include <Form.hpp>
+#include "Bureaucrat.hpp"
 
 int	main(void)
 {
 	try
 	{
-		Bureaucrat A("A", 1);
-		std::cout << A << std::endl;
-		std::cout << A.getGrade() << std::endl;
-		std::cout << A.getName() << std::endl;
-		A.incrementGrade();
-		std::cout << A << std::endl;
-		A.decrementGrade();
-		std::cout << A << std::endl;
+		Bureaucrat personA("A", 1);
+		std::cout << personA << std::endl;
+		std::cout << personA.getGrade() << std::endl;
+		std::cout << personA.getName() << std::endl;
+		personA.incrementGrade();
+		std::cout << personA << std::endl;
+		personA.decrementGrade();
+		std::cout << personA << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -20,10 +19,10 @@ int	main(void)
 	}
 	try
 	{
-		Bureaucrat B("B", 151);
-		std::cout << B << std::endl;
-		std::cout << B.getGrade() << std::endl;
-		std::cout << B.getName() << std::endl;
+		Bureaucrat personB("B", 151);
+		std::cout << personB << std::endl;
+		std::cout << personB.getGrade() << std::endl;
+		std::cout << personB.getName() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -31,10 +30,10 @@ int	main(void)
 	}
 	try
 	{
-		Bureaucrat C("C", 0);
-		std::cout << C << std::endl;
-		std::cout << C.getGrade() << std::endl;
-		std::cout << C.getName() << std::endl;
+		Bureaucrat personC("C", 0);
+		std::cout << personC << std::endl;
+		std::cout << personC.getGrade() << std::endl;
+		std::cout << personC.getName() << std::endl;
 	}
 	catch (const std::exception &e)
 	{
