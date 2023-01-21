@@ -1,12 +1,20 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() {}
+ShrubberyCreationForm::ShrubberyCreationForm() 
+{
+}
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {}
+ShrubberyCreationForm::~ShrubberyCreationForm() 
+{
+}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("shrubbery creation", target, 145, 137) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("shrubbery creation", target, 145, 137) 
+{
+}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form(copy) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form(copy) 
+{
+}
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
 {

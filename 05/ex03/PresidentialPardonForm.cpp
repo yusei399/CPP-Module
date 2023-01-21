@@ -8,6 +8,12 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : Form
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : Form(copy) {}
 
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &rhs)
+{
+	(void)rhs;
+	return (*this);
+}
+
 void	PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
 	this->check_executor(executor);

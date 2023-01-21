@@ -20,4 +20,3 @@ class	ShrubberyCreationForm : public Form
 };
 
 #endif
-

@@ -17,6 +17,5 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &r
 void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
 	this->check_executor(executor);
-	std::cout << "* bzzzzzzz... * " << this->getTarget() << " has been robotomized " << (rand() % 2 ? "successfully" : "UNsuccessfully") << std::endl;
+	std::cout << "Making some drilling noises " << this->getTarget() << " has been robotomized " << (rand() % 2 ? "successfully" : "UNsuccessfully") << std::endl;
 }
-

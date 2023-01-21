@@ -37,9 +37,14 @@ Form::~Form() {}
 
 Form	&Form::operator=(const Form &rhs)
 {
-	this->_signed = rhs._signed;
-	this->_target = rhs._target;
-	return (*this);
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->_signed = rhs._signed;
+		this->_target = rhs._target;
+		return (*this);
+	}
 }
 
 const std::string	&Form::getName(void) const

@@ -5,15 +5,15 @@ int	main()
 {
 	srand(time(0));
 
-	Bureaucrat				Mica("Mica Hilson", 145);
-	Bureaucrat				Brian("Brian Ellison", 137);
-	Bureaucrat				Karin("Karin Markides", 1);
+	Bureaucrat				Shogura("Shogura", 145);
+	Bureaucrat				Yusei("Yusei", 137);
+	Bureaucrat				Susui("Susui", 1);
 
 	Intern	intern;
 
 	Form	*fshrub = intern.makeForm("shrubbery creation", "home");
-	Form	*frobo = intern.makeForm("robotomy request", "Calculon");
-	Form	*fpardon = intern.makeForm("presidential pardon", "Zapp Brannigan");
+	Form	*frobo = intern.makeForm("robotomy request", "jjiojoi");
+	Form	*fpardon = intern.makeForm("presidential pardon", "guyguyg");
 	Form	*fnull = intern.makeForm("resurrection ritual", "Luci");
 
 	std::cout << "fshrub located at " << fshrub << std::endl;
@@ -23,12 +23,12 @@ int	main()
 
 	std::cout << std::endl;
 
-	Mica.signForm(*fshrub);
-	Brian.executeForm(*fshrub);
-	Karin.signForm(*frobo);
-	Karin.executeForm(*frobo);
-	Karin.signForm(*fpardon);
-	Karin.executeForm(*fpardon);
+	Shogura.signForm(*fshrub);
+	Yusei.executeForm(*fshrub);
+	Susui.signForm(*frobo);
+	Susui.executeForm(*frobo);
+	Susui.signForm(*fpardon);
+	Susui.executeForm(*fpardon);
 
 	delete fshrub;
 	delete frobo;

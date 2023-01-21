@@ -30,7 +30,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 	else
 	{
 		this->grade_ = other.grade_;
-		return *this;
+		return (*this);
 	}
 }
 

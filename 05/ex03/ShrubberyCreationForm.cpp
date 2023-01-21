@@ -49,6 +49,12 @@ void	ShrubberyCreationForm::draw_tree(int i, int j, int height, std::ostream &o)
 	this->putchar(i, j, height, o);
 }
 
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
+{
+	(void)rhs;
+	return(*this);
+}
+
 void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
 	this->check_executor(executor);

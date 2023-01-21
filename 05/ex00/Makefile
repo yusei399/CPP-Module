@@ -10,10 +10,10 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 all : ${NAME}
 
 .cpp.o:
-	@${CC} ${CFLAGS} -c $< -o $(<:.cpp=.o)
+	@${CXX} ${CXXFLAGS} -c $< -o $(<:.cpp=.o)
 
 ${NAME} : ${OBJS}
-	@${CC} ${OBJS} ${CFLAGS} -o ${NAME}
+	@${CXX} ${OBJS} ${CXXFLAGS} -o ${NAME}
 
 clean:
 	${RM} ${OBJS}
