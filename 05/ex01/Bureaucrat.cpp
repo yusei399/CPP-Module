@@ -25,7 +25,7 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
-	if (this == &&rhs)
+	if (this == &other)
 		return (*this);
 	else
 	{
