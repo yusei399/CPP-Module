@@ -1,10 +1,10 @@
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include "Bureaucrat.hpp"
 # include <string>
 
-class	Form
+class	AForm
 {
 	private:
 		const std::string	_name;
@@ -34,13 +34,13 @@ class	Form
 				virtual const char *what() const throw();
 		};
 	protected:
-		Form();
-		Form(const std::string &name, const std::string &target, int sign_grade, int exec_grade);
-		Form(const Form &copy);
+		AForm();
+		AForm(const std::string &name, const std::string &target, int sign_grade, int exec_grade);
+		AForm(const AForm &copy);
 		void				check_executor(const Bureaucrat &executor) const;
 	public:
-		virtual ~Form();
-		Form				&operator=(const Form &rhs);
+		virtual ~AForm();
+		AForm				&operator=(const AForm &rhs);
 		const std::string	&getName() const;
 		const std::string	&getTarget() const;
 		int					getSignGrade() const;
@@ -50,6 +50,6 @@ class	Form
 		virtual void		execute(const Bureaucrat &executor) const = 0;
 };
 
-std::ostream	&operator<<(std::ostream &o, const Form &f);
+std::ostream	&operator<<(std::ostream &o, const AForm &f);
 
 #endif

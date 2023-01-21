@@ -1,12 +1,26 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() {}
+ShrubberyCreationForm::ShrubberyCreationForm() 
+{
+}
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {}
+ShrubberyCreationForm::~ShrubberyCreationForm() 
+{
+}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("shrubbery creation", target, 145, 137) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("shrubbery creation", target, 145, 137) 
+{
+}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form(copy) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : AForm(copy) 
+{
+}
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
+{
+	(void)rhs;
+	return(*this);
+}
 
 void ShrubberyCreationForm::putchar(int i, int j, int height, std::ostream &o) const
 {
@@ -47,12 +61,6 @@ void	ShrubberyCreationForm::draw_tree(int i, int j, int height, std::ostream &o)
 	else
 		this->draw_tree(i, j - 1, height, o);
 	this->putchar(i, j, height, o);
-}
-
-ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
-{
-	(void)rhs;
-	return(*this);
 }
 
 void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const

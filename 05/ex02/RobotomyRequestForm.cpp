@@ -4,9 +4,9 @@ RobotomyRequestForm::RobotomyRequestForm() {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : Form("robotomy request", target, 72, 45) {}
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("robotomy request", target, 72, 45) {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) : Form(copy) {}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) : AForm(copy) {}
 
 RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &rhs)
 {

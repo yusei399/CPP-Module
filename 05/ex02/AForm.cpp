@@ -1,41 +1,41 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
-const char	*Form::GradeTooHighException::what() const throw()
+const char	*AForm::GradeTooHighException::what() const throw()
 {
 	return ("The grade is higher than the maximum possible grade (1).");
 }
 
-Form::GradeTooLowException::GradeTooLowException() : _msg("The grade is lower than the minimum possible grade (150).") {}
+AForm::GradeTooLowException::GradeTooLowException() : _msg("The grade is lower than the minimum possible grade (150).") {}
 
-Form::GradeTooLowException::GradeTooLowException(const char *_msg) : _msg(_msg) {}
+AForm::GradeTooLowException::GradeTooLowException(const char *_msg) : _msg(_msg) {}
 
-const char	*Form::GradeTooLowException::what() const throw()
+const char	*AForm::GradeTooLowException::what() const throw()
 {
 	return (this->_msg);
 }
 
-const char	*Form::ExecutingUnsignedFormException::what() const throw()
+const char	*AForm::ExecutingUnsignedFormException::what() const throw()
 {
 	return ("Cannot execute an unsigned form.");
 }
 
-Form::Form() : _name(), _target(), _sign_grade(1), _exec_grade(1), _signed(false) {}
+AForm::AForm() : _name(), _target(), _sign_grade(1), _exec_grade(1), _signed(false) {}
 
-Form::Form(const std::string &name, const std::string &target, int sign_grade, int exec_grade)
+AForm::AForm(const std::string &name, const std::string &target, int sign_grade, int exec_grade)
 : _name(name), _target(target), _sign_grade(sign_grade), _exec_grade(exec_grade), _signed(false)
 {
-	if (sign_grade < 1 || exec_grade < 1)
+	if (sign_grade < max_grade || exec_grade < max_grade)
 		throw GradeTooHighException();
-	else if (sign_grade > 150 || exec_grade > 150)
+	else if (sign_grade > min_grade || exec_grade > min_grade)
 		throw GradeTooLowException();
 }
 
-Form::Form(const Form &copy) : _name(copy._name), _target(copy._target), _sign_grade(copy._sign_grade),
+AForm::AForm(const AForm &copy) : _name(copy._name), _target(copy._target), _sign_grade(copy._sign_grade),
 _exec_grade(copy._exec_grade), _signed(copy._signed) {}
 
-Form::~Form() {}
+AForm::~AForm() {}
 
-Form	&Form::operator=(const Form &rhs)
+AForm	&AForm::operator=(const AForm &rhs)
 {
 	if (this == &rhs)
 		return (*this);
@@ -47,32 +47,32 @@ Form	&Form::operator=(const Form &rhs)
 	}
 }
 
-const std::string	&Form::getName(void) const
+const std::string	&AForm::getName(void) const
 {
 	return (this->_name);
 }
 
-const std::string	&Form::getTarget(void) const
+const std::string	&AForm::getTarget(void) const
 {
 	return (this->_target);
 }
 
-int	Form::getSignGrade(void) const
+int	AForm::getSignGrade(void) const
 {
 	return (this->_sign_grade);
 }
 
-int	Form::getExecutionGrade(void) const
+int	AForm::getExecutionGrade(void) const
 {
 	return (this->_exec_grade);
 }
 
-bool	Form::isSigned(void) const
+bool	AForm::isSigned(void) const
 {
 	return (this->_signed);
 }
 
-std::ostream	&operator<<(std::ostream &o, const Form &f)
+std::ostream	&operator<<(std::ostream &o, const AForm &f)
 {
 	o << "Form `" << f.getName() << "`, ";
 	if (!f.isSigned())
@@ -81,14 +81,14 @@ std::ostream	&operator<<(std::ostream &o, const Form &f)
 	return (o);
 }
 
-void	Form::beSigned(const Bureaucrat &bureaucrat)
+void	AForm::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() > this->_sign_grade)
 		throw GradeTooLowException("Bureaucrat is not authorized to sign due to their grade being too low");
 	this->_signed = true;
 }
 
-void	Form::check_executor(const Bureaucrat &executor) const
+void	AForm::check_executor(const Bureaucrat &executor) const
 {
 	if (executor.getGrade() > this->_exec_grade)
 		throw GradeTooLowException("Bureaucrat is not authorized to sign due to their grade being too low");

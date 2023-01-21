@@ -1,13 +1,11 @@
 NAME = ex03
 
-SRCS = Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp  Intern.cpp main.cpp 
+SRCS = Convert.cpp main.cpp
 OBJS = ${SRCS:.cpp=.o}
 CXX = c++
-
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-
-all : ${NAME}
+all: ${NAME}
 
 .cpp.o:
 	@${CXX} ${CXXFLAGS} -c $< -o $(<:.cpp=.o)
@@ -16,9 +14,9 @@ ${NAME} : ${OBJS}
 	@${CXX} ${OBJS} ${CXXFLAGS} -o ${NAME}
 
 clean:
-	${RM} ${OBJS}
+	@${RM} ${OBJS}
 
-fclean :clean
-	${RM} ${NAME}
+fclean: clean
+	@${RM} ${NAME}
 
-re : fclean all
+re: fclean all

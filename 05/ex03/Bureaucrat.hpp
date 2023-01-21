@@ -4,7 +4,7 @@
 # include <string>
 # include <iostream>
 
-class	Form;
+class	AForm;
 
 class	Bureaucrat
 {
@@ -15,8 +15,8 @@ class	Bureaucrat
 		Bureaucrat	&operator=(const Bureaucrat &rhs);
 		const std::string	&getName() const;
 		int					getGrade() const;
-		void				signForm(Form &form) const;
-		void				executeForm(const Form &form);
+		void				signForm(AForm &form) const;
+		void				executeForm(const AForm &form);
 		void				promote();
 		void				demote();
 	private:
@@ -35,7 +35,7 @@ class	Bureaucrat
 		int					_grade;
 };
 
-# include "Form.hpp"
+# include "AForm.hpp"
 
 std::ostream	&operator<<(std::ostream &o, const Bureaucrat &b);
 

@@ -62,7 +62,7 @@ void	Bureaucrat::demote()
 		throw GradeTooLowException();
 }
 
-void	Bureaucrat::signForm(Form &form) const
+void	Bureaucrat::signForm(AForm &form) const
 {
 	try
 	{
@@ -76,7 +76,7 @@ void	Bureaucrat::signForm(Form &form) const
 	}
 }
 
-void	Bureaucrat::executeForm(const Form &form)
+void	Bureaucrat::executeForm(const AForm &form)
 {
 	try
 	{

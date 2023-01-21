@@ -27,8 +27,13 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name), _grade(copy.
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &rhs)
 {
-	this->_grade = rhs._grade;
-	return (*this);
+	if (this == &rhs)
+		return (*this);
+	else
+	{
+		this->_grade = rhs._grade;
+		return (*this);
+	}
 }
 
 const std::string	&Bureaucrat::getName() const
@@ -57,21 +62,21 @@ void	Bureaucrat::demote()
 		throw GradeTooLowException();
 }
 
-void	Bureaucrat::signForm(Form &form) const
+void	Bureaucrat::signForm(AForm &form) const
 {
 	try
 	{
 		form.beSigned(*this);
-		std::cout << this->_name << " succeeded in signing `" << form.getName() << "`" << std::endl;
+		std::cout << this->_name << " succeeded in signing " << form.getName() << "`" << std::endl;
 	}
 	catch (const std::exception &e)
 	{
-		std::cout << this->_name << " failed to sign `" << form.getName()
-			<< "` because his/her grade is too low" << std::endl;
+		std::cout << this->_name << " failed to sign " << form.getName()
+			<< "grade is too low" << std::endl;
 	}
 }
 
-void	Bureaucrat::executeForm(const Form &form)
+void	Bureaucrat::executeForm(const AForm &form)
 {
 	try
 	{

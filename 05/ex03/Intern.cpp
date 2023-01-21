@@ -8,24 +8,24 @@ Intern::Intern(const Intern&) {}
 
 Intern &Intern::operator=(const Intern&) {return (*this); }
 
-Form	*Intern::makePresidentialPardon(const std::string &target) const
+AForm	*Intern::makePresidentialPardon(const std::string &target) const
 {
 	return (new PresidentialPardonForm(target));
 }
 
-Form *Intern::makeRobotomyRequest(const std::string &target) const
+AForm *Intern::makeRobotomyRequest(const std::string &target) const
 {
 	return (new RobotomyRequestForm(target));
 }
 
-Form *Intern::makeShrubberyCreation(const std::string &target) const
+AForm *Intern::makeShrubberyCreation(const std::string &target) const
 {
 	return (new ShrubberyCreationForm(target));
 }
 
-Form	*Intern::makeForm(const std::string &name, const std::string &target) const
+AForm	*Intern::makeForm(const std::string &name, const std::string &target) const
 {
-	Form *(Intern::*forms[])(const std::string&) const =
+	AForm *(Intern::*forms[])(const std::string&) const =
 	{
 		&Intern::makePresidentialPardon,
 		&Intern::makeRobotomyRequest,

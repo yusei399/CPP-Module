@@ -7,9 +7,9 @@ Form::Form() : name_("unknown"), is_signed_(false), req_sign_(MIN_GRADE), req_ex
 
 Form::Form(std::string name, const int req_sign, const int req_exe) : name_(name), is_signed_(false), req_sign_(req_sign), req_exe_(req_exe)
 {
-	if (req_sign > MIN_GRADE || req_exe > MIN_GRADE)
+	if (req_sign > min_grade || req_exe > min_grade)
 		throw(Form::GradeTooLowException());
-	else if (req_sign < MAX_GRADE || req_exe < MAX_GRADE)
+	else if (req_sign < max_grade || req_exe < max_grade)
 		throw(Form::GradeTooHighException());
 }
 

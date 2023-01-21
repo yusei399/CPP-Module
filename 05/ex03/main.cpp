@@ -11,10 +11,10 @@ int	main()
 
 	Intern	intern;
 
-	Form	*fshrub = intern.makeForm("shrubbery creation", "home");
-	Form	*frobo = intern.makeForm("robotomy request", "jjiojoi");
-	Form	*fpardon = intern.makeForm("presidential pardon", "guyguyg");
-	Form	*fnull = intern.makeForm("resurrection ritual", "Luci");
+	AForm	*fshrub = intern.makeForm("shrubbery creation", "home");
+	AForm	*frobo = intern.makeForm("robotomy request", "jjiojoi");
+	AForm	*fpardon = intern.makeForm("presidential pardon", "guyguyg");
+	AForm	*fnull = intern.makeForm("resurrection ritual", "Luci");
 
 	std::cout << "fshrub located at " << fshrub << std::endl;
 	std::cout << "frobo located at " << frobo << std::endl;

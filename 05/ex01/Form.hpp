@@ -22,8 +22,9 @@ public:
 	bool getIsSigned(void) const;
 	int getReqSign(void) const;
 	int getReqExe(void) const;
-
 	void beSigned(const Bureaucrat &);
+	static const int max_grade = 1; 
+	static const int min_grade = 150;
 
 private:
 	class GradeTooHighException : public std::exception

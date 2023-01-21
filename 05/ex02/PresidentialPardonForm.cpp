@@ -4,9 +4,9 @@ PresidentialPardonForm::PresidentialPardonForm() {}
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : Form("presidential pardon", target, 25, 5) {}
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AForm("presidential pardon", target, 25, 5) {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : Form(copy) {}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : AForm(copy) {}
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &rhs)
 {
