@@ -9,7 +9,7 @@ class	RobotomyRequestForm : public Form
 		RobotomyRequestForm(const std::string &target);
 		RobotomyRequestForm(const RobotomyRequestForm &copy);
 		~RobotomyRequestForm();
-		using	Form::operator=;
+		RobotomyRequestForm	&operator=(const RobotomyRequestForm &rhs);
 		void	execute(const Bureaucrat &executor) const;
 	private:
 		RobotomyRequestForm();

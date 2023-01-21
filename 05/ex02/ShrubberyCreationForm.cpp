@@ -8,6 +8,12 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form(copy) {}
 
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
+{
+	(void)rhs;
+	return(*this);
+}
+
 void ShrubberyCreationForm::putchar(int i, int j, int height, std::ostream &o) const
 {
 	if (i == height -1)

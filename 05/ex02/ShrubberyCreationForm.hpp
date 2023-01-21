@@ -10,7 +10,7 @@ class	ShrubberyCreationForm : public Form
 		ShrubberyCreationForm(const std::string &target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &copy);
 		~ShrubberyCreationForm();
-		using	Form::operator=;
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rhs);
 		void	execute(const Bureaucrat &executor) const;
 	private:
 		void	draw_tree(std::ostream &o) const;

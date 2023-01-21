@@ -8,6 +8,12 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : Form("robo
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) : Form(copy) {}
 
+RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &rhs)
+{
+	(void)rhs;
+	return	(*this);
+}
+
 void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
 	this->check_executor(executor);
