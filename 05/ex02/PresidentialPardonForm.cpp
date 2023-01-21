@@ -10,12 +10,8 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &cop
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &rhs)
 {
-	if (this == &rhs)
-		return (*this);
-	else
-	{
-		return (*this);
-	}
+	(void)rhs;
+	return (*this);
 }
 
 void	PresidentialPardonForm::execute(const Bureaucrat &executor) const
