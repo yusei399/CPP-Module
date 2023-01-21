@@ -17,6 +17,7 @@ class	ShrubberyCreationForm : public AForm
 		void	draw_tree(int i, int j, int height, std::ostream &o) const;
 		void	putchar(int i, int j, int height, std::ostream &o) const;
 		ShrubberyCreationForm();
+		static const char * asciiTree;
 };
 
 #endif

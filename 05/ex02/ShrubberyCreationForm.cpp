@@ -1,5 +1,15 @@
 #include "ShrubberyCreationForm.hpp"
 
+
+const char *ShrubberyCreationForm::asciiTree =
+	"		    *\n"
+	"		   *-*\n"
+	"		  *---*\n"
+	"		 *-----*\n"
+	"		*-------*\n"
+	"	   *---------*\n"
+	"		   |||\n";
+
 ShrubberyCreationForm::ShrubberyCreationForm() 
 {
 }
@@ -38,6 +48,7 @@ void ShrubberyCreationForm::putchar(int i, int j, int height, std::ostream &o) c
 				o << ' ';
 		}
 	}
+	std::cout << "\n";
 }
 
 void	ShrubberyCreationForm::draw_tree(std::ostream &o) const
