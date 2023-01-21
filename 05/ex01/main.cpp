@@ -3,14 +3,11 @@
 
 int main(void)
 {
-
-	// normal pattern
 	try
 	{
 		Form formA("formA", 141, 100);
 		Bureaucrat A("A", 50);
 		Bureaucrat B("B", 101);
-
 		std::cout << formA << std::endl;
 		std::cout << A << std::endl;
 		std::cout << B << std::endl;
