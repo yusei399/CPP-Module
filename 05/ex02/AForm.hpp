@@ -37,7 +37,7 @@ class	AForm
 		AForm();
 		AForm(const std::string &name, const std::string &target, int sign_grade, int exec_grade);
 		AForm(const AForm &copy);
-		bool			check_executor(const Bureaucrat &executor) const;
+		void				check_executor(const Bureaucrat &executor) const;
 	public:
 		virtual ~AForm();
 		AForm				&operator=(const AForm &rhs);
@@ -48,6 +48,7 @@ class	AForm
 		bool				isSigned() const;
 		void				beSigned(const Bureaucrat &bureaucrat);
 		virtual void		execute(const Bureaucrat &executor) const = 0;
+		bool				check(const Bureaucrat &executor) const;
 };
 
 std::ostream	&operator<<(std::ostream &o, const AForm &f);

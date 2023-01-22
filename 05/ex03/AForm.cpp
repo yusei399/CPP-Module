@@ -95,3 +95,12 @@ void	AForm::check_executor(const Bureaucrat &executor) const
 	if (!this->_signed)
 		throw ExecutingUnsignedFormException();
 }
+
+bool	AForm::check(const Bureaucrat &executor) const
+{
+	if (executor.getGrade() > this->_exec_grade)
+		throw GradeTooLowException("Bureaucrat is not authorized to sign due to their grade being too low");
+	if (!this->_signed)
+		throw ExecutingUnsignedFormException();
+	return true;
+}

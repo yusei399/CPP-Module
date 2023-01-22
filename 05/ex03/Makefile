@@ -17,6 +17,7 @@ ${NAME} : ${OBJS}
 
 clean:
 	${RM} ${OBJS}
+	${RM} home_shrubbery
 
 fclean :clean
 	${RM} ${NAME}

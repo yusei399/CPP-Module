@@ -20,5 +20,6 @@ clean:
 
 fclean :clean
 	${RM} ${NAME}
+	${RM} PlanetExpress_shrubbery
 
 re : fclean all

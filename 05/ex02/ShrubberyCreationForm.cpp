@@ -76,7 +76,7 @@ void	ShrubberyCreationForm::draw_tree(int i, int j, int height, std::ostream &o)
 void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
 	
-	if (this->check_executor(executor))
+	if (this->check(executor))
 	{
 		std::ofstream file((getTarget() + "_shrubbery").c_str());
 		if (file.is_open())

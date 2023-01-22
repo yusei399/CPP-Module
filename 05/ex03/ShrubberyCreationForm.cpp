@@ -1,12 +1,21 @@
 #include "ShrubberyCreationForm.hpp"
 
+const char *ShrubberyCreationForm::asciiTree =
+	"		    *\n"
+	"		   *-*\n"
+	"		  *---*\n"
+	"		 *-----*\n"
+	"		*-------*\n"
+	"	   *---------*\n"
+	"		   |||\n";
+
 ShrubberyCreationForm::ShrubberyCreationForm() {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : Form("shrubbery creation", target, 145, 137) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("shrubbery creation", target, 145, 137) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form(copy) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : AForm(copy) {}
 
 void ShrubberyCreationForm::putchar(int i, int j, int height, std::ostream &o) const
 {
@@ -57,7 +66,16 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
-	this->check_executor(executor);
-	std::ofstream	o(this->getTarget() + "_shrubbery", std::ofstream::out);
-	this->draw_tree(o);
+	
+	if (this->check(executor))
+	{
+		std::ofstream file((getTarget() + "_shrubbery").c_str());
+		if (file.is_open())
+		{
+			file << asciiTree << std::endl;
+			file.close();
+		}
+		else
+			std::cerr << "Unable to open file" << std::endl;
+	}
 }

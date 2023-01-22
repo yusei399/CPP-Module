@@ -48,7 +48,7 @@ class	AForm
 		bool				isSigned() const;
 		void				beSigned(const Bureaucrat &bureaucrat);
 		virtual void		execute(const Bureaucrat &executor) const = 0;
-		bool check(const Bureaucrat &) const ;
+		bool				check(const Bureaucrat &executor) const;
 };
 
 std::ostream	&operator<<(std::ostream &o, const AForm &f);
