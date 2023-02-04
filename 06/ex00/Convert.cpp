@@ -148,8 +148,26 @@ void Convert::convert_int()
     int i = static_cast<int>(d);
     char ch = static_cast<char>(d);
     float f = static_cast<float>(d);
+
+    if (isprint(ch) && 0 < d && d < 256)
+        std::cout << "char:" << ch << std::endl;
+    else
+        std::cout << "char: Non displayable" << std::endl; 
+    if (d <= INT_MAX && d >= INT_MIN)
+    {
+        std::cout << "int:"<< _minus << i << std::endl;
+        std::cout << "float:" << _minus << f << std::endl;
+        std::cout << "double" << _minus << d << std::endl;
+    }
+    else
+    {
+        std::cout << "int overflow" << std::endl;
+        std::cout << "float overflow" << std::endl;
+        std::cout << "double overflow" << std::endl;
+    }
 }
 
 void Convert::converter()
 {
+
 }
