@@ -7,29 +7,25 @@
 class Convert
 {
 	private:
-		enum NumType {TypeChar, TypeInt, TypeFloat, TypeDouble };
-	private:
-    std::string value;
-    char        c;
-    int         num_int;
-    double      numd;
-    float       numf;
-    NumType     type;
-    bool        error;
+    std::string _num;
+	char _minus;
+	std::string _Finfo;
+	std::string _Dinfo;
 
-	private:
+
+	void converter(void);
+	bool char_check();
+	bool float_check();
+	bool double_check();
+	bool int_check();
+	bool special_value();
+
 	public:
 		Convert();
+		Convert(std::string num);
 		Convert(const Convert&);
-		Convert(const std::string &value);
-		Convert& operator=(const Convert&);
 		~Convert();
-
-		void parse();
-		std::string to_char() const;
-		std::string to_int() const;
-		std::string to_float() const;
-		std::string to_double() const;
+		Convert& operator=(const Convert&);
 };
 
 
