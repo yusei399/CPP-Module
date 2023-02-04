@@ -99,3 +99,32 @@ bool Convert::float_check()
         return false;
     return true;
 }
+
+bool Convert::double_check()
+{
+    int i = 0;
+
+    if (_num[i] == '-')
+    {
+        i++;
+        _minus = '-';
+    }
+    if (!isdigit(_num[i]))
+        return false;
+    if (_num[i++] == '.')
+        return false;
+    if (!isdigit(_num[i]))
+        return false;
+    else if (_num[0] == '0')
+    {
+        _Finfo = ".0f";
+        _Dinfo = ".0";
+    }
+    while (isdigit(_num[i]))
+        i++;
+    if (_num[i++] != 'f')
+        return false;
+    if (_num[i])
+        return false;
+    return true;
+}
