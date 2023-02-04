@@ -46,3 +46,13 @@ bool Convert::special_value()
     }
     return false;
 }
+
+bool Convert::char_check()
+{
+    if (_num.length() != 1)
+        return false;
+    if (isprint(_num[0]) && !isprint(_num[0]))
+        return false;
+    return true;
+}
+
