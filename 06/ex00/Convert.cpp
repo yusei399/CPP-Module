@@ -142,7 +142,14 @@ void Convert::convert_char()
     std::cout << "double" << char_num << std::endl;
 }
 
+void Convert::convert_int()
+{
+    double d = strtod(_num.c_str(), NULL);
+    int i = static_cast<int>(d);
+    char ch = static_cast<char>(d);
+    float f = static_cast<float>(d);
+}
+
 void Convert::converter()
 {
-    
 }
