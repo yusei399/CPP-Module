@@ -161,9 +161,9 @@ void Convert::convert_int()
     }
     else
     {
-        std::cout << "int overflow" << std::endl;
-        std::cout << "float overflow" << std::endl;
-        std::cout << "double overflow" << std::endl;
+        std::cout << "int: int overflow" << std::endl;
+        std::cout << "float: int overflow" << std::endl;
+        std::cout << "double: int overflow" << std::endl;
     }
 }
 
