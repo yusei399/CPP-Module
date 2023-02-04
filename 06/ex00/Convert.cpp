@@ -196,6 +196,33 @@ void Convert::convert_float()
     }
 } 
 
+void Convert::convert_double()
+{
+    double d = strtod(_num.c_str(), NULL);
+    int i = static_cast<int>(d);
+    char ch = static_cast<char>(d);
+    float f = static_cast<float>(d);
+    
+    if (isprint(ch) && 0 < d && d < 256)
+        std::cout << "char:" << ch << std::endl;
+    else
+        std::cout << "non displayable" << std::endl;
+    if (DBL_MAX >= d && d >= DBL_MIN)
+    {
+        std::cout << "double:" << d << std::endl;
+        if (d <= INT_MAX && d >= INT_MIN)
+            std::cout << "int: " << i << std::endl;
+        else
+            std::cout << "int overflow" << std::endl;
+        std::cout << "float:" << f << std::endl;
+    }
+    else
+    {
+        std::cout << "float: double overflow" << std::endl;
+        std::cout << "double: double overflow" << std::endl;
+    }
+}
+
 void Convert::converter()
 {
 }

@@ -17,6 +17,7 @@ class Convert
 	void convert_char();
 	void convert_int();
 	void convert_float();
+	void convert_double();
 	bool char_check();
 	bool float_check();
 	bool double_check();
