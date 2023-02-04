@@ -141,3 +141,8 @@ void Convert::convert_char()
     std::cout << "float" << char_num << std::endl;
     std::cout << "double" << char_num << std::endl;
 }
+
+void Convert::converter()
+{
+    
+}
