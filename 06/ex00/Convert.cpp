@@ -128,3 +128,16 @@ bool Convert::double_check()
         return false;
     return true;
 }
+
+void Convert::convert_char()
+{
+    char char_num = _num[0];
+    int i = static_cast<int>(char_num);
+    float f = static_cast<float>(char_num);
+    double d = static_cast<double>(char_num);
+
+    std::cout << "char" << char_num << std::endl;
+    std::cout << "int" << char_num << std::endl;
+    std::cout << "float" << char_num << std::endl;
+    std::cout << "double" << char_num << std::endl;
+}

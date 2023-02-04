@@ -14,6 +14,7 @@ class Convert
 
 
 	void converter(void);
+	void convert_char();
 	bool char_check();
 	bool float_check();
 	bool double_check();
