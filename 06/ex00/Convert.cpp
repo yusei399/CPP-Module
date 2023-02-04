@@ -18,3 +18,20 @@ Convert &Convert::operator=(const Convert &rhs)
     return (*this);
 }
 
+bool Convert::special_value()
+{
+    if (_num == "nan" || _num == "nanf")
+    {
+        std::cout << "char impossible" << std::endl;
+        std::cout << "int impossible" << std::endl;
+        std::cout << "float nanf" << std::endl;
+        std::cout << "double nan" << std::endl;
+    }
+    else if (_num == "+inf" || _num == "+inff")
+    {
+        std::cout << "char impossible" << std::endl;
+        std::cout << "int impossible" << std::endl;
+        std::cout << "float +inff" << std::endl;
+        std::cout << "double ++inff" << std::endl;
+    }
+}
