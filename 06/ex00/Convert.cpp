@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <iostream>
 #include <limits>
+#include <cfloat>
 #include <sstream>
 
 Convert::Convert(){}
@@ -167,7 +168,34 @@ void Convert::convert_int()
     }
 }
 
+void Convert::convert_float()
+{
+    double d = strtod(_num.c_str(), NULL);
+    int  i = static_cast<int>(d);
+    char ch = static_cast<char>(d);
+    float f = static_cast<float>(d);
+
+    if (isprint(ch) && 0 < d &&  d < 256)
+        std::cout << "char:" << ch << std::endl;
+    else
+        std::cout << "Non displayable" << std::endl;
+    if (FLT_MAX >= d && d <= FLT_MIN)
+    {
+        if (d <= INT_MAX && d >= INT_MIN)
+            std::cout << "int:" << i << std::endl;
+        else
+            std::cout << "int overflow" << std::endl;
+        std::cout << "float:" << f << std::endl;
+        std::cout << "double:" << d << std::endl;
+    }
+    else
+    {
+        std::cout << "int: float overflow" << std::endl;
+        std::cout << "float: float overflow" << std::endl;
+        std::cout << "double: float overflow" << std::endl;
+    }
+} 
+
 void Convert::converter()
 {
-
 }
