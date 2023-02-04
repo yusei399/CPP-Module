@@ -56,3 +56,17 @@ bool Convert::char_check()
     return true;
 }
 
+bool Convert::int_check()
+{
+    if (_num[0] == '-')
+    {
+        _num.erase(0, 1);
+        _minus = '-';
+    }
+    for (size_t i = 0; i < _num.length(); i++)
+    {
+        if (!isdigit(_num[i]))
+            return false;
+    }
+    return true;
+}
