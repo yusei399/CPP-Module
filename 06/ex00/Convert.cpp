@@ -138,9 +138,9 @@ void Convert::convert_char()
     double d = static_cast<double>(char_num);
 
     std::cout << "char" << char_num << std::endl;
-    std::cout << "int" << char_num << std::endl;
-    std::cout << "float" << char_num << std::endl;
-    std::cout << "double" << char_num << std::endl;
+    std::cout << "int" << i << std::endl;
+    std::cout << "float" << f << std::endl;
+    std::cout << "double" << d << std::endl;
 }
 
 void Convert::convert_int()
