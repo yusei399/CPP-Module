@@ -85,7 +85,7 @@ bool Convert::float_check()
         return false;
     while (isdigit(_num[i]))
         i++;
-    if (_num[i++] == '.')
+    if (_num[i++] != '.')
         return false;
     if (!isdigit(_num[i]))
         return false;
@@ -116,7 +116,7 @@ bool Convert::double_check()
         return false;
     while (isdigit(_num[i]))
         i++;
-    if (_num[i++] == '.')
+    if (_num[i++] != '.')
         return false;
     if (!isdigit(_num[i]))
         return false;
@@ -127,8 +127,6 @@ bool Convert::double_check()
     }
     while (isdigit(_num[i]))
         i++;
-    if (_num[i++] != 'f')
-        return false;
     if (_num[i])
         return false;
     return true;
@@ -179,11 +177,11 @@ void Convert::convert_float()
     char ch = static_cast<char>(d);
     float f = static_cast<float>(d);
 
-    if (isprint(ch) && 0 < d &&  d < 256)
+    if (isprint(ch) && d < 256 &&  d > 0)
         std::cout << "char:" << ch << std::endl;
     else
         std::cout << "char : Non displayable" << std::endl;
-    if (FLT_MAX >= d && d <= FLT_MIN)
+    if (d <= FLT_MAX  && d >= FLT_MIN)
     {
         if (d <= INT_MAX && d >= INT_MIN)
             std::cout << "int:" << _minus << i << std::endl;
@@ -227,11 +225,20 @@ void Convert::converter()
     if (!special_value())
     {
         if (char_check())
+        {
             convert_char();
+            std::cout << "convert char" << std::endl;
+        }
         else if (int_check())
+        {
+            std::cout << "convert int" << std::endl;
             convert_int();
+        }
         else if (float_check())
+        {
+            std::cout << "convert float" << std::endl;
             convert_float();
+        }
         else if (double_check())
             convert_double();
         else
