@@ -52,9 +52,9 @@ bool Convert::char_check()
 {
     if (_num.length() != 1)
         return false;
-    if (isprint(_num[0]) && !isprint(_num[0]))
-        return false;
-    return true;
+    if (isprint(_num[0]) && !isdigit(_num[0]))
+        return true;
+    return false;
 }
 
 bool Convert::int_check()
@@ -83,11 +83,13 @@ bool Convert::float_check()
     }
     if (!isdigit(_num[i]))
         return false;
+    while (isdigit(_num[i]))
+        i++;
     if (_num[i++] == '.')
         return false;
     if (!isdigit(_num[i]))
         return false;
-    else if (_num[0] == '0')
+    else if (_num[i] == '0')
     {
         _Finfo = ".0f";
         _Dinfo = ".0";
@@ -112,11 +114,13 @@ bool Convert::double_check()
     }
     if (!isdigit(_num[i]))
         return false;
+    while (isdigit(_num[i]))
+        i++;
     if (_num[i++] == '.')
         return false;
     if (!isdigit(_num[i]))
         return false;
-    else if (_num[0] == '0')
+    else if (_num[i] == '0')
     {
         _Finfo = ".0f";
         _Dinfo = ".0";
@@ -185,8 +189,8 @@ void Convert::convert_float()
             std::cout << "int:" << _minus << i << std::endl;
         else
             std::cout << "int : int overflow" << std::endl;
-        std::cout << "float:" << _minus << f << std::endl;
-        std::cout << "double:" << _minus << d << std::endl;
+        std::cout << "float:" << _minus << f << _Finfo << std::endl;
+        std::cout << "double:" << _minus << d << _Dinfo <<std::endl;
     }
     else
     {
@@ -214,10 +218,10 @@ void Convert::convert_double()
         else
             std::cout << "int overflow" << std::endl;
         if (d <= FLT_MAX && d >= FLT_MIN)
-            std::cout << "float:"<< _minus << f << std::endl;
+            std::cout << "float:"<< _minus << f << _Finfo << std::endl;
         else
             std::cout << "float : overflow" << std::endl;
-        std::cout << "double:" << _minus << d << std::endl;
+        std::cout << "double:" << _minus << d << _Dinfo << std::endl;
     }
     else
     {
