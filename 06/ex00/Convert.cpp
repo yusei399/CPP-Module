@@ -228,4 +228,23 @@ void Convert::convert_double()
 
 void Convert::converter()
 {
+    if (!special_value())
+    {
+        if (char_check())
+            convert_char();
+        else if (int_check())
+            convert_int();
+        else if (float_check())
+            convert_float();
+        else if (double_check())
+            convert_double();
+        else
+        {
+            std::cout << "char: impossible" << std::endl;
+            std::cout << "int: impossible" << std::endl;
+            std::cout << "float: impossible" << std::endl;  
+            std::cout << "double: impossible" << std::endl;
+        }
+    }
+    return ;
 }

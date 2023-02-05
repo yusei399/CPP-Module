@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 	{
 		class Convert	type(argv[1]);
 		
-		type.converter();
+		type.;
 	}
 	else
 		std::cerr << "Invalid arg" << std::endl;
