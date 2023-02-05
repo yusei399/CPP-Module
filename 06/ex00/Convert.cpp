@@ -178,15 +178,15 @@ void Convert::convert_float()
     if (isprint(ch) && 0 < d &&  d < 256)
         std::cout << "char:" << ch << std::endl;
     else
-        std::cout << "Non displayable" << std::endl;
+        std::cout << "char : Non displayable" << std::endl;
     if (FLT_MAX >= d && d <= FLT_MIN)
     {
         if (d <= INT_MAX && d >= INT_MIN)
-            std::cout << "int:" << i << std::endl;
+            std::cout << "int:" << _minus << i << std::endl;
         else
-            std::cout << "int overflow" << std::endl;
-        std::cout << "float:" << f << std::endl;
-        std::cout << "double:" << d << std::endl;
+            std::cout << "int : int overflow" << std::endl;
+        std::cout << "float:" << _minus << f << std::endl;
+        std::cout << "double:" << _minus << d << std::endl;
     }
     else
     {
@@ -209,12 +209,15 @@ void Convert::convert_double()
         std::cout << "non displayable" << std::endl;
     if (DBL_MAX >= d && d >= DBL_MIN)
     {
-        std::cout << "double:" << d << std::endl;
         if (d <= INT_MAX && d >= INT_MIN)
-            std::cout << "int: " << i << std::endl;
+            std::cout << "int: " << _minus << i << std::endl;
         else
             std::cout << "int overflow" << std::endl;
-        std::cout << "float:" << f << std::endl;
+        if (d <= FLT_MAX && d >= FLT_MIN)
+            std::cout << "float:"<< _minus << f << std::endl;
+        else
+            std::cout << "float : overflow" << std::endl;
+        std::cout << "double:" << _minus << d << std::endl;
     }
     else
     {
