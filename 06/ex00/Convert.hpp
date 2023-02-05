@@ -13,7 +13,6 @@ class Convert
 	std::string _Dinfo;
 
 
-	void converter(void);
 	void convert_char();
 	void convert_int();
 	void convert_float();
@@ -30,6 +29,7 @@ class Convert
 		Convert(const Convert&);
 		~Convert();
 		Convert& operator=(const Convert&);
+		void converter(void);
 };
 
 
