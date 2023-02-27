@@ -1,6 +1,6 @@
 NAME = ex01
 
-SRCS = main.cpp
+SRCS = main.cpp Base.cpp A.cpp B.cpp C.cpp
 OBJS = ${SRCS:.cpp=.o}
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98

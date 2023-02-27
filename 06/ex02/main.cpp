@@ -13,27 +13,30 @@ Base *generate()
 
 	switch (random)
 	{
-	case 0:
-		return new A();
-	case 1:
-		return new B();
-	default:
-		return new C();
+        case 0:
+            std::cout << "generate A class" << std::endl;
+            return (new A());
+        case 1:
+            std::cout << "generate B class" << std::endl;
+            return (new B());
+        default:
+            std::cout << "generate C class" << std::endl;
+            return (new C());
 	}
 }
 
 void identify(Base* p)
 {
 	if (dynamic_cast<A*>(p)) {
-        std::cout << "A\n";
+        std::cout << "A  Object\n";
         return;
     }
     if (dynamic_cast<B*>(p)) {
-        std::cout << "B\n";
+        std::cout << "B  Object\n";
         return;
     }
     if (dynamic_cast<C*>(p)) {
-        std::cout << "C\n";
+        std::cout << "C  Object\n";
         return;
     }
 
@@ -44,19 +47,19 @@ void identify(Base& p)
 {
     try {
         static_cast<void>(dynamic_cast<A&>(p));
-        std::cout << "A\n";
+        std::cout << "A Object \n";
         return;
     } catch (std::exception&) {
     }
     try {
         static_cast<void>(dynamic_cast<B&>(p));
-        std::cout << "B\n";
+        std::cout << "B  Object\n";
         return;
     } catch (std::exception&) {
     }
     try {
         static_cast<void>(dynamic_cast<C&>(p));
-        std::cout << "C\n";
+        std::cout << "C  Object\n";
         return;
     } catch (std::exception&) {
     }

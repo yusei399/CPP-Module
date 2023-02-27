@@ -19,31 +19,37 @@ Convert &Convert::operator=(const Convert &rhs)
     return (*this);
 }
 
+void Convert::impossible_message()
+{
+    std::cout << "char impossible" << std::endl;
+    std::cout << "int impossible" << std::endl;
+    std::cout << "float impossible" << std::endl;
+    std::cout << "double impossible" << std::endl;
+}
+
 bool Convert::special_value()
 {
-    if (_num == "nan" || _num == "nanf")
+    if (_num == "nan" || _num == "nanf" || _num == "+inf" || _num == "+inff" || _num == "-inf" || _num == "-inff")
     {
-        std::cout << "char impossible" << std::endl;
-        std::cout << "int impossible" << std::endl;
-        std::cout << "float nanf" << std::endl;
-        std::cout << "double nan" << std::endl;
-        return true;
-    }
-    else if (_num == "+inf" || _num == "+inff")
-    {
-        std::cout << "char impossible" << std::endl;
-        std::cout << "int impossible" << std::endl;
-        std::cout << "float +inff" << std::endl;
-        std::cout << "double ++inff" << std::endl;
-        return true;
-    }
-    else if (_num == "-inf" || _num == "-inff")
-    {
-        std::cout << "char impossible" << std::endl;
-        std::cout << "int impossible" << std::endl;
-        std::cout << "float -inf" << std::endl;
-        std::cout << "double -inff" << std::endl;
-        return true;
+            std::cout << "char impossible" << std::endl;
+            std::cout << "int impossible" << std::endl;
+        if (_num == "nan" || _num == "nanf")
+        {
+            std::cout << "float nanf" << std::endl;
+            std::cout << "double nan" << std::endl;
+        }
+        else if (_num == "+inf" || _num == "+inff")
+        {
+            std::cout << "float +inff" << std::endl;
+            std::cout << "double ++inff" << std::endl;
+            return true;
+        }
+        else if (_num == "-inf" || _num == "-inff")
+        {
+            std::cout << "float -inf" << std::endl;
+            std::cout << "double -inff" << std::endl;
+        }
+    return true;
     }
     return false;
 }
@@ -59,13 +65,13 @@ bool Convert::char_check()
 
 bool Convert::int_check()
 {
-    if (_num[0] == '-')
-    {
-        _num.erase(0, 1);
-        _minus = '-';
-    }
     for (size_t i = 0; i < _num.length(); i++)
     {
+        if (i == 0 && _num[i] == '-')
+        {
+            _num.erase(0, 1);
+            _minus = '-';
+        }
         if (!isdigit(_num[i]))
             return false;
     }
@@ -76,11 +82,6 @@ bool Convert::float_check()
 {
     int i = 0;
 
-    if (_num[i] == '-')
-    {
-        i++;
-        _minus = '-';
-    }
     if (!isdigit(_num[i]))
         return false;
     while (isdigit(_num[i]))
@@ -225,29 +226,15 @@ void Convert::converter()
     if (!special_value())
     {
         if (char_check())
-        {
             convert_char();
-            std::cout << "convert char" << std::endl;
-        }
         else if (int_check())
-        {
-            std::cout << "convert int" << std::endl;
             convert_int();
-        }
         else if (float_check())
-        {
-            std::cout << "convert float" << std::endl;
             convert_float();
-        }
         else if (double_check())
             convert_double();
         else
-        {
-            std::cout << "char: impossible" << std::endl;
-            std::cout << "int: impossible" << std::endl;
-            std::cout << "float: impossible" << std::endl;  
-            std::cout << "double: impossible" << std::endl;
-        }
+            impossible_message();
     }
     return ;
 }

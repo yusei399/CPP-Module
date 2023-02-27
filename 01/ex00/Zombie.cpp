@@ -9,5 +9,5 @@ Zombie::Zombie(const std::string &_name) : _name(_name) { }
 
 Zombie::~Zombie(void)
 {
-	std::cout << this->_name << "name" << std::endl;
+	std::cout << this->_name << "name" << "~Zombi"<< std::endl;
 }
