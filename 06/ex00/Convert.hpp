@@ -8,9 +8,9 @@ class Convert
 {
 	private:
     std::string _num;
-	char _minus;
-	std::string _Finfo;
-	std::string _Dinfo;
+	char _sign;
+	std::string _float_flag;
+	std::string _double_flag;
 
 
 	void convert_char();

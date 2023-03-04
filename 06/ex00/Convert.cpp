@@ -9,7 +9,7 @@
 
 Convert::Convert(){}
 
-Convert::Convert(std::string num) : _num(num), _minus('\0'), _Finfo("f"){}
+Convert::Convert(std::string num) : _num(num), _sign('\0'), _float_flag("f"){}
 
 Convert::~Convert(){}
 
@@ -65,13 +65,13 @@ bool Convert::char_check()
 
 bool Convert::int_check()
 {
+    if (_num[0] == '-')
+    {
+        _num.erase(0, 1),
+        _sign = '-';
+    }
     for (size_t i = 0; i < _num.length(); i++)
     {
-        if (i == 0 && _num[i] == '-')
-        {
-            _num.erase(0, 1);
-            _minus = '-';
-        }
         if (!isdigit(_num[i]))
             return false;
     }
@@ -84,19 +84,14 @@ bool Convert::float_check()
 
     if (!isdigit(_num[i]))
         return false;
-    while (isdigit(_num[i]))
-        i++;
+    for (; isdigit(_num[i]); i++ ){}
     if (_num[i++] != '.')
         return false;
     if (!isdigit(_num[i]))
         return false;
     else if (_num[i] == '0')
-    {
-        _Finfo = ".0f";
-        _Dinfo = ".0";
-    }
-    while (isdigit(_num[i]))
-        i++;
+        _float_flag = ".0f",_double_flag = ".0";
+    for (; isdigit(_num[i]); i++){}
     if (_num[i++] != 'f')
         return false;
     if (_num[i])
@@ -107,27 +102,16 @@ bool Convert::float_check()
 bool Convert::double_check()
 {
     int i = 0;
-
     if (_num[i] == '-')
-    {
-        i++;
-        _minus = '-';
-    }
+        i++,_sign = '-';
     if (!isdigit(_num[i]))
         return false;
-    while (isdigit(_num[i]))
-        i++;
-    if (_num[i++] != '.')
-        return false;
-    if (!isdigit(_num[i]))
+    for  (; isdigit(_num[i]); i++){}
+    if (_num[i++] != '.' && isdigit(_num[i]))
         return false;
     else if (_num[i] == '0')
-    {
-        _Finfo = ".0f";
-        _Dinfo = ".0";
-    }
-    while (isdigit(_num[i]))
-        i++;
+        _float_flag = ".0f",_double_flag = ".0";
+    for  (; isdigit(_num[i]); i++){}
     if (_num[i])
         return false;
     return true;
@@ -157,11 +141,18 @@ void Convert::convert_int()
         std::cout << "char:" << ch << std::endl;
     else
         std::cout << "char: Non displayable" << std::endl; 
-    if (d <= INT_MAX && d >= INT_MIN)
+    
+    if (d == 0)
     {
-        std::cout << "int:"<< _minus << i << std::endl;
-        std::cout << "float:" << _minus << f << ".0f" <<std::endl;
-        std::cout << "double:" << _minus << d << ".0" <<std::endl;
+        std::cout << "int:" << i << std::endl;
+        std::cout << "float:" << f << ".0f" <<std::endl;
+        std::cout << "double:" << d << ".0" <<std::endl; 
+    }
+    else if (d <= INT_MAX && d >= INT_MIN)
+    {
+        std::cout << "int:"<< _sign << i << std::endl;
+        std::cout << "float:" << _sign << f << ".0f" <<std::endl;
+        std::cout << "double:" << _sign << d << ".0" <<std::endl;
     }
     else
     {
@@ -182,14 +173,20 @@ void Convert::convert_float()
         std::cout << "char:" << ch << std::endl;
     else
         std::cout << "char : Non displayable" << std::endl;
-    if (d <= FLT_MAX  && d >= FLT_MIN)
+    if (d == 0)
+    {
+        std::cout << "int:" << i << std::endl;
+        std::cout << "float:" << f << ".0f" <<std::endl;
+        std::cout << "double:" << d << ".0" <<std::endl;  
+    }
+    else if (d <= FLT_MAX  && d >= FLT_MIN)
     {
         if (d <= INT_MAX && d >= INT_MIN)
-            std::cout << "int:" << _minus << i << std::endl;
+            std::cout << "int:" << _sign << i << std::endl;
         else
             std::cout << "int : int overflow" << std::endl;
-        std::cout << "float:" << _minus << f << _Finfo << std::endl;
-        std::cout << "double:" << _minus << d << _Dinfo <<std::endl;
+        std::cout << "float:" << _sign << f << _float_flag << std::endl;
+        std::cout << "double:" << _sign << d << _double_flag <<std::endl;
     }
     else
     {
@@ -211,14 +208,24 @@ void Convert::convert_double()
     else
         std::cout << "non displayable" << std::endl;
     if (d <= INT_MAX && d >= INT_MIN)
-            std::cout << "int: " << _minus << i << std::endl;
+    {
+        if (d != 0)
+            std::cout << "int: " << _sign << i << std::endl;
+        else
+            std::cout << "int:" <<  "0.0" << std::endl;
+    }
     else
             std::cout << "int overflow" << std::endl;
-    if (d <= FLT_MAX && d >= FLT_MIN)
-            std::cout << "float:"<< _minus << f << _Finfo << std::endl;
+    if (d == 0)
+            std::cout << "float:" << "0.0f" << std::endl;
+    else if (d <= FLT_MAX && d >= FLT_MIN)
+            std::cout << "float:"<< _sign << f << _float_flag << std::endl;
     else
             std::cout << "float : overflow" << std::endl;
-    std::cout << "double:" << _minus << d << _Dinfo << std::endl;
+    if (d != 0)
+        std::cout << "double:" << _sign << d << _double_flag << std::endl;
+    else
+        std::cout << "double:" << "0.0" << std::endl;
 }
 
 void Convert::converter()
