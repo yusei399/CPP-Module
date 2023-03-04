@@ -1,4 +1,4 @@
-NAME = ex03
+NAME = ex00
 
 SRCS = Convert.cpp main.cpp
 OBJS = ${SRCS:.cpp=.o}
