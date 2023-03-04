@@ -10,17 +10,16 @@
 Base *generate()
 {
 	int random = rand() % 3;
-
 	switch (random)
 	{
         case 0:
-            std::cout << "generate A class" << std::endl;
+            std::cout << "Class A" << std::endl;
             return (new A());
         case 1:
-            std::cout << "generate B class" << std::endl;
+            std::cout << "Class B" << std::endl;
             return (new B());
         default:
-            std::cout << "generate C class" << std::endl;
+            std::cout << "Class C" << std::endl;
             return (new C());
 	}
 }
@@ -28,56 +27,51 @@ Base *generate()
 void identify(Base* p)
 {
 	if (dynamic_cast<A*>(p)) {
-        std::cout << "A  Object\n";
+        std::cout << "Object A" << std::endl;
         return;
     }
     if (dynamic_cast<B*>(p)) {
-        std::cout << "B  Object\n";
+        std::cout << "Object B" << std::endl;
         return;
     }
     if (dynamic_cast<C*>(p)) {
-        std::cout << "C  Object\n";
+        std::cout << "Object C" << std::endl;
         return;
     }
 
-    std::cout << "Can't identify\n";
+    std::cout << "unknown" << std::endl;
 }
 
 void identify(Base& p)
 {
     try {
         static_cast<void>(dynamic_cast<A&>(p));
-        std::cout << "A Object \n";
+        std::cout << "Object A" << std::endl;
         return;
     } catch (std::exception&) {
     }
     try {
         static_cast<void>(dynamic_cast<B&>(p));
-        std::cout << "B  Object\n";
+        std::cout << "Object B" << std::endl;
         return;
     } catch (std::exception&) {
     }
     try {
         static_cast<void>(dynamic_cast<C&>(p));
-        std::cout << "C  Object\n";
+        std::cout << "Object C" << std::endl;
         return;
     } catch (std::exception&) {
     }
 
-    std::cout << "Can't identify\n";
+    std::cout << "unknown" << std::endl;
 }
 
 int main()
 {
-    srand(static_cast<unsigned int>(time(NULL)));
-
-    for (size_t i = 0; i < 5; i++) {
+    for (size_t i = 0; i < 10; i++) {
         Base* ptr = generate();
         identify(ptr);
         identify(*ptr);
-
-        if (i < 4) {
-            std::cout << "\n";
-        }
+        std::cout << std::endl;
     }
 }

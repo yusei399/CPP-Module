@@ -4,8 +4,8 @@
 
 typedef struct 
 {
-	const char *msg;
-	int 	error;
+	int 	id;
+	const char    *msg;
 } Data;
 
 uintptr_t serialize(Data* ptr)
@@ -20,11 +20,15 @@ Data* deserialize(uintptr_t raw)
 
 int main()
 {
-    Data      data = { "Message", 0 };
-    uintptr_t raw = serialize(&data);
-    Data*     ptr = deserialize(raw);
+    Data      data;
+    data.id = 42;
+    data.msg = "Hello World!";
 
-    std::cout << "Raw: 0x" << std::hex << raw << "\n"
-				<< "Ptr: " << ptr << "\n";
-    std::cout << "Data->msg: " << ptr->msg << "\nData->error: " << ptr->error << "\n";
+    Data *ptr = &data;
+    uintptr_t raw = serialize(ptr);
+    Data*     ptr2 = deserialize(raw);
+
+    std::cout << "Original pointer: " << ptr << std::endl;
+    std::cout << "Deserialized pointer: " << ptr2 << std::endl;
+    std::cout << "Pointers are equal: " << (ptr == ptr2) << std::endl;
 }
