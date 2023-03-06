@@ -8,15 +8,15 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 all: ${NAME}
 
 .cpp.o:
-	@${CXX} ${CXXFLAGS} -c $< -o $(<:.cpp=.o)
+	${CXX} ${CXXFLAGS} -c $< -o $(<:.cpp=.o)
 
 ${NAME} : ${OBJS}
-	@${CXX} ${OBJS} ${CXXFLAGS} -o ${NAME}
+	${CXX} ${OBJS} ${CXXFLAGS} -o ${NAME}
 
 clean:
-	@${RM} ${OBJS}
+	${RM} ${OBJS}
 
 fclean: clean
-	@${RM} ${NAME}
+	${RM} ${NAME}
 
 re: fclean all

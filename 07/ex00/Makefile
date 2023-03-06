@@ -1,5 +1,5 @@
 
-NAME	= iter
+NAME	= ex00
 
 SRCS	= main.cpp
 OBJS	= ${SRCS:.cpp=.o}
