@@ -2,13 +2,13 @@
 #define EASYFIND_HPP
 
 template <typename T>
-bool easyfind(T container, int n)
+typename T::iterator easyfind(T container, int n)
 {
     return std::find(container.begin(), container.end(), n) != container.end();
 }
 
 template <typename T>
-void test(T container, int n)
+void test_vetor(T container, int n)
 {
     if (easyfind(container, n))
         std::cout << n << " found\n";
@@ -16,5 +16,14 @@ void test(T container, int n)
         std::cout << n << " not found\n";
 }
 
+
+template <typename T>
+void test_list(T container, int n)
+{
+    if (easyfind(container, n))
+        std::cout << n << " found\n";
+    else
+        std::cout << n << " not found\n";
+}
 
 #endif
