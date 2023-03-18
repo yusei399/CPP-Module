@@ -8,15 +8,14 @@
 class Span
 {
 private:
-	unsigned int size_;
-	std::vector<long> num_;
+	unsigned int _size;
+	std::vector<long> _num;
 public:
 	Span();
 	Span(unsigned int num);
 	~Span();
-
-	Span(const Span &);
-	Span &operator=(const Span &);
+	Span(const Span &other);
+	Span &operator=(const Span &rhs);
 
 	void	addNumber(long);
 	void	addNumber(std::vector<int> &);
