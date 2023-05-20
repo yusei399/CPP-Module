@@ -58,33 +58,43 @@ int Check_leap_year(int year, int month)
 		return 31;
 }
 
-size_t CountPipe(std::string line)
-{
-	size_t count = 0;
-	for (size_t i = 0; i < line.size(); i++)
-	{
-		if (line[i] == '|')
-			count++;
-	}
-	return count;
-}
 
+bool isNumberArray(char* value_char_array)
+{
+    int i = 0;
+    while (value_char_array[i])
+    {
+        if (!isdigit(value_char_array[i]))
+            return false;
+        i++;
+    }
+    
+    if (value_char_array[i - 1] == '.') // 最後が '.' の場合をはじく
+        return false;
+    
+    return true;
+}
 
 bool Parse_date(std::string &line,BitcoinExchange &be)
 {
-	// std::string data;
+	std::string data;
 	// float value;
-	// char *data_araay;
-	// char *value_array;
+	char *data_array;
+	char *value_array;
 	// int year, month, day;
 	// std::string month_str, day_str;
 	(void)be;
+	std::cout << std::count(line.begin(), line.end(), '|') << std::endl;
 
-	if (std::count(line.begin(), line.end(), '|') != 2)
+	if (std::count(line.begin(), line.end(), '|') > 1)
 	{
 		std::cout << "Error: file's line is not 'date | value'." << std::endl;
-		return false;
+		return 1;
 	}
-	// std::cout << "line is correct" << std::endl;
-	// return true;
+	data_array = strtok(const_cast<char*>(line.c_str()), "|");
+	return true;
+
+	value_array = strtok(NULL, "|");
+	data = std::string(data_array);
+	std::cout << data << std::endl;
 }
