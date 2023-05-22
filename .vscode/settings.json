@@ -79,6 +79,15 @@
 		"cinttypes": "cpp",
 		"iomanip": "cpp",
 		"fstream": "cpp",
-		"stack": "cpp"
+		"stack": "cpp",
+		"list": "cpp",
+		"__tree": "cpp",
+		"charconv": "cpp",
+		"codecvt": "cpp",
+		"format": "cpp",
+		"map": "cpp",
+		"set": "cpp",
+		"span": "cpp",
+		"unordered_set": "cpp"
 	}
 }

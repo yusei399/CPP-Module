@@ -30,15 +30,15 @@ int main(int argc, char **argv)
 		}
 		
 		// csv.close();
-		for (const auto &i : be.getEntries())
-			std::cout << i.first << ": " << i.second << std::endl;
+		// for (const auto &i : be.getEntries())
+		// 	std::cout << i.first << ": " << i.second << std::endl;
 		
 		if (argc != 2)
 		{
 			std::cout << "Usage: ./bitcoin \"expression\"" << std::endl;
 			return 1;
 		}
-		std::ifstream ifs(argv[1]);
+			std::ifstream ifs(argv[1]);
 		if (!ifs.is_open())
 			std::cerr << "Error: file not found" << std::endl;
 		if (Linecheck(ifs))
