@@ -81,11 +81,11 @@ size_t xStrlen(char *str)
 	return (i);
 }
 
-bool	validateDate(std::string date, int &year, int &month)
+bool	validateDate(std::string date, int &year, int &month,int &day)
 {
 	char 	*c_p_year;
 	char 	*c_p_month;
-	// char 	*c_p_day;
+	char 	*c_p_day;
 	// std::cout << "data :"<< date << std::endl;
 	// std::cout << "year :"<< year << std::endl;
 	// std::cout << "month :"<< month << std::endl;
@@ -103,24 +103,25 @@ bool	validateDate(std::string date, int &year, int &month)
 	else year = atoi(c_p_year);
 	std::cout << "\033[31m" << "year :"<< year << "\033[0m" << std::endl;
 	c_p_month = strtok(NULL, "-");
+	if (c_p_month == NULL)
+		return (1);
+	c_p_month = (char *)trim(c_p_month).c_str();
+	if (xStrlen(c_p_month) != 2 || atoi(c_p_month) > MAX_MONTH || atoi(c_p_month) < MIN_MONTH)
+		return (1);
+	else
+		month = atoi(c_p_month);
 	std::cout << "\033[32m" << "c_p_month :"<< c_p_month << "\033[0m" << std::endl;
-	std::cout << "month :"<< month << std::endl;
-	// if (c_p_month == NULL)
-	// 	return (1);
-	// c_p_month = (char *)trim(c_p_month).c_str();
-	// if (xStrlen(c_p_month) != 2 || atoi(c_p_month) > MAX_MONTH || atoi(c_p_month) < MIN_MONTH)
-	// 	return (1);
-	// else
-	// 	month = atoi(c_p_month);
-	// c_p_day = strtok(NULL, "-");
-	// // std::cout << "day :"<< day << std::endl;
-	// if (c_p_day == NULL)
-	// 	return (1);
-	// c_p_day = (char *)trim(c_p_day).c_str();
-	// if (xStrlen(c_p_day) != 2 || atoi(c_p_day) > Check_leap_year(year, month) || atoi(c_p_day) < MIN_DAY)
-	// 	return (1);
-	// else
-	// 	day = atoi(c_p_day);
+	std::cout << "\033[31m" << "month :"<< month << "\033[0m" << std::endl;
+	c_p_day = strtok(NULL, "-");
+	if (c_p_day == NULL)
+		return (1);
+	c_p_day = (char *)trim(c_p_day).c_str();
+	if (xStrlen(c_p_day) != 2 || atoi(c_p_day) > Check_leap_year(year, month) || atoi(c_p_day) < MIN_DAY)
+		return (1);
+	else
+		day = atoi(c_p_day);
+	std::cout << "\033[32m" << "c_p_day :"<< c_p_day << "\033[0m" << std::endl;
+	std::cout << "\033[31m" <<  "day :"<< day <<  "\033[0m" <<  std::endl;
 	return (1);
 }
 
@@ -149,7 +150,7 @@ bool Parse_date(std::string& line,BitcoinExchange &be)
 	char *date_array;
 	char *value_array;
 	// float result;
-	int year, month;
+	int year, month, day;
 	// std::string month_str = "", day_str = "";
 	// (void)be;
 		std::cout << "start line: " << line << std::endl;
@@ -171,7 +172,7 @@ bool Parse_date(std::string& line,BitcoinExchange &be)
 	std::cout << "value_array :"<< value_array << std::endl;
 	date = std::string(date_array);
 	std::cout << "date :"<< date << std::endl;
-	if (validateDate(date, year, month))
+	if (validateDate(date, year, month, day))
 	{
 		std::cout << "Error: date is not a valid date. test1 " << date << std::endl;
 		return 1;
