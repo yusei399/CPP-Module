@@ -67,9 +67,11 @@ BitcoinExchange::BitcoinExchange(const char* databaseFile) {
     std::ifstream dbFile;
     dbFile.exceptions(std::ifstream::badbit);
     dbFile.open(databaseFile);
-    if (dbFile.fail())
-        throw std::ios_base::failure("Failed to open file");
-
+    if (dbFile.is_open() == false)
+	{
+		std::cerr << "Failed to open database file...\n";
+	}
+	
     std::string header;
     std::getline(dbFile, header);
     if (header != "date,exchange_rate")
@@ -111,8 +113,12 @@ void BitcoinExchange::applyExchangeRate(const char* inputFile) {
     std::ifstream input;
     input.exceptions(std::ifstream::badbit);
     input.open(inputFile);
-    if (input.fail())
-        throw std::ifstream::failure("Failed to open file");
+	if (!input.is_open())
+	{
+		std::cerr << "Error: Not open file"  << std::endl;
+		return ;
+	}
+
 
     std::string header;
     std::getline(input, header);
