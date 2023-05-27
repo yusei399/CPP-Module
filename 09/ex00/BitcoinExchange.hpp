@@ -1,37 +1,27 @@
-#ifndef BITCOINEXCHANGE_HPP
-#define BITCOINEXCHANGE_HPP
+#ifndef BITCOIN_EXCHANGE_HPP
+#define BITCOIN_EXCHANGE_HPP
 
-#include <iostream>
 #include <fstream>
-#include <sstream>
 #include <string>
-#include <exception>
 #include <map>
-#include <vector>
-#include <stdio.h>
-#include <stdbool.h>
-#include <ctype.h>
 
-#define MAX_YEAR 2023
-#define MIN_YEAR 2008
-#define MAX_MONTH 12
-#define MIN_MONTH 1
-#define MIN_DAY 1
-
-class BitcoinExchange
-{
+class BitcoinExchange {
 private:
-    std::map<std::string, std::string> read_csv;
+    BitcoinExchange();
+
+    typedef std::greater_equal<std::string> DateComparator;
+    typedef std::map<std::string, float, DateComparator> ExchangeDatabase;
+
+    ExchangeDatabase _database;
 
 public:
-    BitcoinExchange();
+    BitcoinExchange(const char* databaseFile);
+    BitcoinExchange(const BitcoinExchange& other);
     ~BitcoinExchange();
-    BitcoinExchange& operator=(const BitcoinExchange& other);
-    void addEntry(const std::string& key, const std::string& value);
-    const std::map<std::string, std::string>& getEntries() const;
-};
 
-bool Linecheck(std::ifstream& ifs);
-bool Parse_date(std::string& line, BitcoinExchange& be);
+    BitcoinExchange& operator=(const BitcoinExchange& other);
+
+    void applyExchangeRate(const char* inputFile);
+};
 
 #endif
