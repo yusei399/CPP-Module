@@ -4,57 +4,77 @@
 #include <sstream>
 #include <cstdlib>
 
-static bool validateDate(std::string& date) {
-    if (date.length() != 10)
-    {
-		std::cout << "Error: bad input." << date<< std::endl;
-		return false;
-	}
+static bool validateDate(const std::string& date) {
+    if (date.empty()) {
+        std::cout << "Error: Missing date." << std::endl;
+        return false;
+    }
 
+    if (date.length() != 10) {
+        std::cout << "Error: Bad date format." << std::endl;
+        return false;
+    }
+
+    int year, month, day;
+    char dash1, dash2;
     std::istringstream stream(date);
-    int value;
-    stream >> value;
-    if (stream.fail() || value < 0 || value > 9999 || stream.peek() != '-')
-    {
-		std::cout << "Error: bad input." << date<< std::endl;
-		return false;
-	}
-    stream.ignore();
-    stream >> value;
-    if (stream.fail() || value < 1 || value > 12 || stream.peek() != '-')
-    {
-		std::cout << "Error: bad input." << date<< std::endl;
-		return false;
-	}
-    stream.ignore();
-    stream >> value;
-    if (stream.fail() || value < 1 || value > 31 || !stream.eof())
-    {
-		std::cout << "Error: bad input." << date<< std::endl;
-		return false;
-	}
+    stream >> year >> dash1 >> month >> dash2 >> day;
+
+    if (stream.fail() || dash1 != '-' || dash2 != '-') {
+        std::cout << "Error: Invalid date format." << std::endl;
+        return false;
+    }
+
+    if (year < 0 || year > 9999 || month < 1 || month > 12 || day < 1 || day > 31) {
+        std::cout << "Error: Invalid date values." << std::endl;
+        return false;
+    }
+
+    bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    int daysInMonth = 31;
+
+    switch (month) {
+        case 2:
+            daysInMonth = isLeapYear ? 29 : 28;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            daysInMonth = 30;
+            break;
+        default:
+            break;
+    }
+
+    if (day > daysInMonth) {
+        std::cout << "Error: Invalid day value for the given month." << std::endl;
+        return false;
+    }
+
     return true;
 }
 
+
 BitcoinExchange::BitcoinExchange(const char* databaseFile) {
-    std::ifstream dbFile;
-    dbFile.exceptions(std::ifstream::badbit);
-    dbFile.open(databaseFile);
-    if (!dbFile.is_open()) {
+    std::ifstream read_csv;
+    read_csv.exceptions(std::ifstream::badbit);
+    read_csv.open(databaseFile);
+    if (!read_csv.is_open()) {
         std::cerr << "Failed to open database file...\n";
         return;
     }
 
     std::string header;
-    std::getline(dbFile, header);
+    std::getline(read_csv, header);
     if (header != "date,exchange_rate") {
         std::cerr << "Invalid file header...\n";
         return;
     }
 
     std::string line;
-    while (std::getline(dbFile, line)) {
-        if (dbFile.fail())
+    while (std::getline(read_csv, line)) {
+        if (read_csv.fail())
             continue;
 
         size_t i = line.find_first_of(",");
@@ -85,13 +105,13 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
+
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
     if (this != &other) {
         this->_database = other._database;
     }
     return *this;
 }
-
 
 void BitcoinExchange::applyExchangeRate(const char* inputFile) {
     std::ifstream input;
@@ -110,6 +130,8 @@ void BitcoinExchange::applyExchangeRate(const char* inputFile) {
     }
 
     std::string line;
+    bool dataFound = false;  // データが見つかったかどうかを示すフラグ
+
     while (std::getline(input, line)) {
         if (input.fail())
             continue;
@@ -154,5 +176,10 @@ void BitcoinExchange::applyExchangeRate(const char* inputFile) {
         newValueStr.erase(newValueStr.find_last_not_of("0.") + 1);
 
         std::cout << date << " => " << str << " = " << newValueStr << "\n";
+
+        dataFound = true;  // データが見つかったことを示すフラグをセット
+    }
+	if (!dataFound) {
+        std::cout << "Error: No data found in the CSV file." << std::endl;
     }
 }
