@@ -35,6 +35,6 @@ for i in "${!test_cases[@]}"; do
     # print test case
     echo "Test Case $((i+1)):	'" "${test_cases[$i]}'"
     # run program and print result
-    ./a.out " ${test_cases[$i]} "
+    ./RPN " ${test_cases[$i]} "
     echo ""
 done
