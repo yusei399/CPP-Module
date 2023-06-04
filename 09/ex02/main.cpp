@@ -7,72 +7,99 @@
 #include <iomanip>
 #include <cctype>
 
-int main(int argc, char **argv)
-{
-    std::vector<int> v;
-    std::deque<int> d;
-    if (argc < 2)
-    {
-        std::cerr << "Usage: ./PmergeMe [value1] [value2] ..." << std::endl;
-        return (1);
+void printErrorMessage(const std::string& message) {
+    std::cerr << "Error: " << message << std::endl;
+}
+
+void printVector(const std::vector<int>& v) {
+    std::cout << "Before: ";
+    for (size_t i = 0; i < v.size(); i++)
+        std::cout << v[i] << " ";
+    std::cout << std::endl;
+}
+
+void printDeque(const std::deque<int>& d) {
+    std::cout << "Before: ";
+    for (size_t i = 0; i < d.size(); i++)
+        std::cout << d[i] << " ";
+    std::cout << std::endl;
+}
+
+void printProcessingTime(const std::string& containerName, size_t size, double cpuTime) {
+    std::cout << "Time to process a range of " << size << " elements with " << containerName << ": "  
+        << std::fixed << std::setprecision(5) << cpuTime << " us." << std::endl;
+}
+
+bool validateInputArguments(int argc, char **argv) {
+    if (argc < 2) {
+        printErrorMessage("Usage: ./PmergeMe [value1] [value2] ...");
+        return false;
     }
-    for (int i = 1; i < argc; i++)
-    {
-        for (int j = 0; argv[i][j] != '\0'; j++)
-        {
-            if (isdigit(argv[i][j]) == 0)
-            {
-                std::cerr << "Error: bad input." << std::endl;
-                return (1);
+
+    for (int i = 1; i < argc; i++) {
+        for (int j = 0; argv[i][j] != '\0'; j++) {
+            if (!std::isdigit(argv[i][j])) {
+                printErrorMessage("bad input.");
+                return false;
             }
         }
     }
 
-    for (int i = 1; i < argc; i++)
-        v.push_back(atoi(argv[i]));
+    return true;
+}
 
-    for (int i = 1; i < argc; i++)
-        d.push_back(atoi(argv[i]));
-
-    std::cout << "Before: ";
-    for (size_t i = 0; i < v.size(); i++)
-        std::cout << v[i] << " ";
-    std::cout << std::endl;
-
+void processVector(const std::vector<int>& v) {
+    std::vector<int> vCopy = v;
     clock_t start, end;
     start = clock();
-    PmergeMe_vec(v);
+    PmergeMe_vec(vCopy);
     end = clock();
 
-    std::cout << "After:  ";
-    for (size_t i = 0; i < v.size(); i++)
-        std::cout << v[i] << " ";
-    std::cout << std::endl;
+    printVector(vCopy);
 
-    double cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC * 1000000;
+    double cpuTimeUsed = ((double)(end - start)) / CLOCKS_PER_SEC * 1000000;
+    printProcessingTime("std::vector", v.size(), cpuTimeUsed);
+}
 
-    std::cout << "Time to process a range of " << v.size() << " elements with std::vector: "
-            << std::fixed << std::setprecision(5) << cpu_time_used << " us." << std::endl;
+void processDeque(const std::deque<int>& d) {
+    std::deque<int> dCopy = d;
+    clock_t start, end;
+    start = clock();
+    PmergeMe_deq(dCopy);
+    end = clock();
+
+    printDeque(dCopy);
+
+    double cpuTimeUsed = ((double)(end - start)) / CLOCKS_PER_SEC * 1000000;
+    printProcessingTime("std::deque", d.size(), cpuTimeUsed);
+}
+
+int main(int argc, char **argv) {
+    if (!validateInputArguments(argc, argv)) {
+        return 1;
+    }
+
+    std::vector<int> v;
+    std::deque<int> d;
+
+    for (int i = 1; i < argc; i++) {
+        v.push_back(std::atoi(argv[i]));
+    }
+
+    for (int i = 1; i < argc; i++) {
+        d.push_back(std::atoi(argv[i]));
+    }
 
     std::cout << "Before: ";
-    for (size_t i = 0; i < d.size(); i++)
-        std::cout << d[i] << " ";
-    std::cout << std::endl;
+    printVector(v);
 
-    start = clock();
-    PmergeMe_deq(d);
-    end = clock();
+    processVector(v);
 
+    std::cout << "Before: ";
+    printDeque(d);
 
-    std::cout << "After:  ";
-    for (size_t i = 0; i < d.size(); i++)
-        std::cout << d[i] << " ";
-    std::cout << std::endl;
-
-    cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC * 1000000;
-
-    std::cout << "Time to process a range of " << d.size() << " elements with std::deque: "
-            << std::fixed << std::setprecision(5) << cpu_time_used << " us." << std::endl;
+    processDeque(d);
 
     return 0;
 }
+
