@@ -9,8 +9,8 @@ int main(int argc, char **argv) {
 
 	try {
 		BitcoinExchange exchange("data.csv");
-		exchange.applyExchangeRate(argv[1]);
+		exchange.parser(argv[1]);
 	} catch (std::ios_base::failure const &ex) {
-		std::cerr << "Error: " << ex.what() << '\n';
+		std::cerr << "Error File" << ex.what() << '\n';
 	}
 }

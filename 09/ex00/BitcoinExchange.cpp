@@ -56,19 +56,19 @@ static bool validateDate(const std::string& date) {
 }
 
 
-BitcoinExchange::BitcoinExchange(const char* databaseFile) {
+BitcoinExchange::BitcoinExchange(const char *input) {
     std::ifstream read_csv;
     read_csv.exceptions(std::ifstream::badbit);
-    read_csv.open(databaseFile);
+    read_csv.open(input);
     if (!read_csv.is_open()) {
-        std::cerr << "Failed to open database file...\n";
+        std::cerr << "Failed to open database file" << std::endl;
         return;
     }
 
     std::string header;
     std::getline(read_csv, header);
     if (header != "date,exchange_rate") {
-        std::cerr << "Invalid file header...\n";
+        std::cerr << "Invalid file header..." << std::endl;
         return;
     }
 
@@ -87,20 +87,20 @@ BitcoinExchange::BitcoinExchange(const char* databaseFile) {
 
         i = line.find_first_not_of(",", i);
         const char* floatValue = line.c_str() + i;
-        char* endPointer;
-        float value = std::strtof(floatValue, &endPointer);
+        char* ep;
+        float value = std::strtof(floatValue, &ep);
         if (value < 0) {
             std::cout << "Error: bad input." << floatValue << std::endl;
             continue;
         }
 
-        _database.insert(std::make_pair(date, value));
+        _db.insert(std::make_pair(date, value));
     }
 }
 
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) {
-    _database = other._database;
+    _db = other._db;
 }
 
 BitcoinExchange::~BitcoinExchange() {}
@@ -108,12 +108,12 @@ BitcoinExchange::~BitcoinExchange() {}
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
     if (this != &other) {
-        this->_database = other._database;
+        this->_db = other._db;
     }
     return *this;
 }
 
-void BitcoinExchange::applyExchangeRate(const char* inputFile) {
+void BitcoinExchange::parser(const char* inputFile) {
     std::ifstream input;
     input.exceptions(std::ifstream::badbit);
     input.open(inputFile);
@@ -148,15 +148,15 @@ void BitcoinExchange::applyExchangeRate(const char* inputFile) {
 
         i = line.find_first_not_of(" |", i);
         const char* floatValue = line.c_str() + i;
-        char* endPointer;
-        float value = std::strtof(floatValue, &endPointer);
+        char* ep;
+        float value = std::strtof(floatValue, &ep);
         if (value < 0 || (value == 0 || value > 1000)) {
             std::cout << "Error: bad input." << floatValue << std::endl;
             continue;
         }
 
-        ExchangeDatabase::iterator rate = _database.upper_bound(date);
-        if (rate == _database.end()) {
+        ExchangeDatabase::iterator rate = _db.upper_bound(date);
+        if (rate == _db.end()) {
             std::cerr << "Error: No date before: " << date << "\n";
             continue;
         }

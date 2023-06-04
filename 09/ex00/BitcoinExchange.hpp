@@ -12,16 +12,16 @@ class BitcoinExchange {
         typedef std::greater_equal<std::string> DateComparator;
         typedef std::map<std::string, float, DateComparator> ExchangeDatabase;
 
-        ExchangeDatabase _database;
+        ExchangeDatabase _db;
 
     public:
         BitcoinExchange(const char* databaseFile);
         BitcoinExchange(const BitcoinExchange& other);
         ~BitcoinExchange();
 
-        BitcoinExchange& operator=(const BitcoinExchange& other);
+        void parser(const char *input);
+        BitcoinExchange& operator=(const BitcoinExchange &rhs);
 
-        void applyExchangeRate(const char* inputFile);
 };
 
 #endif
